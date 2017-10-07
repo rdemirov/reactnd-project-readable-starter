@@ -1,6 +1,12 @@
 import actionTypes from './actionTypes';
 import api from '../utils/api';
 
+
+export const sortPosts = (params) => ({
+	type: actionTypes.SORT_POSTS,
+	params
+});
+
 const getCategories = (categories) => ({
 	type: actionTypes.GET_ALL_CATEGORIES,
 	categories
