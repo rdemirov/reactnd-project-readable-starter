@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Categories from './Categories';
 import Header from './Header';
+import Posts from './Posts';
 import { connect } from 'react-redux';
 import './App.css';
 import {
@@ -18,15 +19,12 @@ class App extends Component {
 					<Header />
 				</Row>
 				<Row>
-					<Panel collapsible header={'FILTERS'}>
+					<Panel header={'FILTERS'}>
 						<Categories />
 					</Panel>
 				</Row>
 				<Row>
-
-					<Panel bsStyle='info' header="Panel 1" eventKey="1">Panel 1 content</Panel>
-					<Panel bsStyle='info' header="Panel 2" eventKey="2">Panel 2 content</Panel>
-
+					<Posts />
 				</Row>
 			</Grid>
 		);

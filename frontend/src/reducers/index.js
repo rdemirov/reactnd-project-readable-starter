@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import actionTypes from '../actions/actionTypes';
 
-const defaultPostsState = { postsArray: [] };
+const defaultPostsState = [];
 const defaultCommentsState = [];
 const defaultCategoriesState = [];
 
@@ -23,7 +23,9 @@ const categoriesReducer = (state = defaultCategoriesState, action) => {
 
 const postsReducer = (state = defaultPostsState, action) => {
 	switch (action.type) {
-	default:
+	case actionTypes.GET_ALL_POSTS: {
+		return [...action.posts];
+	}
 	}
 	return state;
 };
