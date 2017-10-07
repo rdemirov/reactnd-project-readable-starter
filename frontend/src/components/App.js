@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Categories from './Categories';
+import { connect } from 'react-redux';
 import './App.css';
 import {
 	Grid,
@@ -9,11 +10,9 @@ import {
 	ButtonToolbar,
 	ButtonGroup,
 	PageHeader,
-	Panel,
 	PanelGroup,
-	Nav,
-	NavItem,
-	ControlLabel
+	ControlLabel,
+	Panel
 } from 'react-bootstrap';
 
 class App extends Component {
@@ -35,13 +34,7 @@ class App extends Component {
 				</Row>
 				<Row>
 					<Panel collapsible header={'FILTERS'}>
-						<Panel bsStyle={'info'} header={'Categories'}>
-							<Nav bsStyle="pills" activeKey={1}>
-								<NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-								<NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-								<NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
-							</Nav>
-						</Panel>
+						<Categories />
 					</Panel>
 				</Row>
 				<Row>
@@ -55,4 +48,9 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => ({
+
+})
+
+
+export default connect(mapStateToProps, null)(App)
