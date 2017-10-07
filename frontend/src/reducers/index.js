@@ -38,9 +38,15 @@ const postsReducer = (state = defaultPostsState, action) => {
 		return [...posts];
 	}
 	case actionTypes.DELETE_POST:{
-		let posts = state.filter((element)=>(element.id!==action.posts.id));
+		let posts = state.filter((element)=>(element.id!==action.post.id));
 		return [
 			...posts
+		];
+	}
+	case actionTypes.VOTE_FOR_POST:{
+		return [
+			...state,
+			action.post
 		];
 	}
 	}
