@@ -44,10 +44,8 @@ class Posts extends Component {
 							</ButtonGroup>
 						</ButtonToolbar>
 					}
-					eventKey="2">
-						<p>
-							{post.body}
-						</p>
+					eventKey={post.id}>
+						{post.body}
 					</Panel>
 				))}
 			</Panel>
