@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import Categories from './Categories';
+import Header from './Header';
 import { connect } from 'react-redux';
 import './App.css';
 import {
 	Grid,
 	Row,
 	Col,
-	Button,
-	ButtonToolbar,
-	ButtonGroup,
-	PageHeader,
-	PanelGroup,
-	ControlLabel,
 	Panel
 } from 'react-bootstrap';
 
@@ -20,17 +15,7 @@ class App extends Component {
 		return (
 			<Grid>
 				<Row>
-					<PageHeader>
-						<h1>Readable</h1>
-						<p><ButtonToolbar>
-							<ButtonGroup bsSize="large">
-								<Button bsStyle='primary'>Add new post</Button>
-								<Button>Newest </Button>
-								<Button>Oldest</Button>
-								<Button>Most voted</Button>
-								<Button>Least voted</Button>
-							</ButtonGroup></ButtonToolbar></p>
-					</PageHeader>
+					<Header />
 				</Row>
 				<Row>
 					<Panel collapsible header={'FILTERS'}>
@@ -48,9 +33,4 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => ({
-
-})
-
-
-export default connect(mapStateToProps, null)(App)
+export default App;
