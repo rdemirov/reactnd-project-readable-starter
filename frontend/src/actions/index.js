@@ -26,3 +26,13 @@ export const fetchPosts = () => dispatch => (
 	api.getPosts()
 		.then(posts => dispatch(getPosts(posts)))
 );
+
+const deletePost = (posts) => ({
+	type: actionTypes.DELETE_POST,
+	posts
+});
+
+export const removePostAsync = (postId) => dispatch => (
+	api.deletePost(postId)
+		.then(post => dispatch(deletePost(post)))
+);

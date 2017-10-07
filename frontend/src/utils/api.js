@@ -66,7 +66,7 @@ export default {
 			.then(comment => comment),
 
 	deletePost: (postId) =>
-		fetch(`${url}:${port}/posts/:${postId}`,
+		fetch(`${url}:${port}/posts/${postId}`,
 			{ headers, method: 'DELETE' })
 			.then(res => res.json())
 			.then(post => post),

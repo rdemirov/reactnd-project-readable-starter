@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
+import { fetchPosts, removePostAsync } from '../actions';
 import {
 	Panel,
 	Grid,
@@ -14,8 +14,18 @@ import {
 } from 'react-bootstrap';
 
 class Posts extends Component {
+
+	constructor(props) {
+		super(props);
+		this.handleDelete = this.handleDelete.bind(this);
+	}
+
 	componentDidMount() {
 		this.props.fetchPosts();
+	}
+
+	handleDelete(event) {
+		this.props.deletePost(event.target.id);
 	}
 
 	render() {
@@ -38,7 +48,8 @@ class Posts extends Component {
 						<ButtonToolbar>
 							<ButtonGroup>
 								<Button><Glyphicon glyph="pencil" /></Button>
-								<Button><Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
+								<Button id={post.id} onClick={this.handleDelete}>
+									<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
 								<Button><Glyphicon glyph="thumbs-up" /></Button>
 								<Button><Glyphicon glyph="thumbs-down" /></Button>
 							</ButtonGroup>
@@ -58,4 +69,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { fetchPosts })(Posts);
+export default connect(mapStateToProps, { fetchPosts,deletePost:removePostAsync })(Posts);
