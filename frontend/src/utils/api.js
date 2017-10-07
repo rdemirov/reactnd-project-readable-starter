@@ -20,34 +20,34 @@ export default {
 	getPosts: () =>
 		fetch(`${url}:${port}/posts`, { headers })
 			.then(res => res.json())
-			.then(data => data),
+			.then(posts => posts),
 
 	getPostsForCategory: (category) =>
 		fetch(`${url}:${port}/posts/:${category}`, { headers })
 			.then(res => res.json())
-			.then(data => data.posts),
+			.then(posts => posts),
 
-	getComments: (postId) =>
+	getCommentsForPost: (postId) =>
 		fetch(`${url}:${port}/posts/:${postId}/comments`, { headers })
 			.then(res => res.json())
-			.then(data => data.posts),
+			.then(comments => comments),
 
 	getCommentDetails: (commentId) =>
 		fetch(`${url}:${port}/comments/:${commentId}`, { headers })
 			.then(res => res.json())
-			.then(data => data.comments),
+			.then(comment => comment),
 
 	getPostDetails: (postId) =>
 		fetch(`${url}:${port}/posts/:${postId}`, { headers })
 			.then(res => res.json())
-			.then(data => data.posts),
+			.then(post => post),
 
 	editPostDetails: (params) => {
 		let { postId, title, body } = params;
 		return fetch(`${url}:${port}/posts/:${postId}`,
 			{ headers, method: 'PUT', body: { title, body } })
 			.then(res => res.json())
-			.then(data => data.posts);
+			.then(post => post);
 	},
 
 	editCommentDetails: (params) => {
@@ -56,27 +56,27 @@ export default {
 		return fetch(`${url}:${port}/comments/:${commentId}`,
 			{ headers, method: 'PUT', body: { timestamp, body } })
 			.then(res => res.json())
-			.then(data => data.posts);
+			.then(comment => comment);
 	},
 
 	deleteComment: (commentId) =>
 		fetch(`${url}:${port}/comments/:${commentId}`,
 			{ headers, method: 'DELETE' })
 			.then(res => res.json())
-			.then(data => data.posts),
+			.then(comment => comment),
 
 	deletePost: (postId) =>
 		fetch(`${url}:${port}/posts/:${postId}`,
 			{ headers, method: 'DELETE' })
 			.then(res => res.json())
-			.then(data => data.posts),
+			.then(post => post),
 
 	voteForPost: (params) => {
 		let { postId, option } = params;
 		return fetch(`${url}:${port}/posts/:${postId}`,
 			{ headers, method: 'POST', body: { option } })
 			.then(res => res.json())
-			.then(data => data.posts);
+			.then(post => post);
 	},
 
 	voteForComment: (params) => {
@@ -84,7 +84,7 @@ export default {
 		return fetch(`${url}:${port}/comments/:${commentId}`,
 			{ headers, method: 'POST', body: { option } })
 			.then(res => res.json())
-			.then(data => data.posts);
+			.then(comment => comment);
 	},
 
 	addNewPost: (params) => {
@@ -93,7 +93,7 @@ export default {
 		return fetch(`${url}:${port}/posts/`,
 			{ headers, method: 'POST', body: params })
 			.then(res => res.json())
-			.then(data => data.posts);
+			.then(post => post);
 	},
 
 	addNewComment: (params) => {
@@ -102,6 +102,6 @@ export default {
 		return fetch(`${url}:${port}/comments`,
 			{ headers, method: 'POST', body: params })
 			.then(res => res.json())
-			.then(data => data.posts);
+			.then(comment => comment);
 	}
 };
