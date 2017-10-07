@@ -16,7 +16,7 @@ class Categories extends Component {
 		return (
 			<Panel bsStyle={'info'} header={'Categories'}>
 				<Nav bsStyle="pills" activeKey={1}>
-					{categories.map((element) => (<NavItem eventKey={element.path}>{element.name}</NavItem>))}
+					{categories.map((element) => (<NavItem eventKey={element.path} key={element.name}>{element.name}</NavItem>))}
 				</Nav>
 			</Panel>
 		);

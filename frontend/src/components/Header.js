@@ -13,15 +13,19 @@ class Header extends Component {
 		let {sortPosts} = this.props;
 		return (
 			<PageHeader>
-				<h1>Readable</h1>
-				<p><ButtonToolbar>
+				<div>
+					<p>
+				Readable
+					</p>
+				</div>
+				<ButtonToolbar>
 					<ButtonGroup bsSize="large">
 						<Button bsStyle='primary'>Add new post</Button>
 						<Button onClick={()=>(sortPosts({sortBy:'dateDesc'}))}>Newest </Button>
 						<Button onClick={()=>(sortPosts({sortBy:'dateAsc'}))}>Oldest</Button>
 						<Button onClick={()=>(sortPosts({sortBy:'votesDesc'}))}>Most voted</Button>
 						<Button onClick={()=>(sortPosts({sortBy:'votesAsc'}))}>Least voted</Button>
-					</ButtonGroup></ButtonToolbar></p>
+					</ButtonGroup></ButtonToolbar>
 			</PageHeader>
 		);
 	}

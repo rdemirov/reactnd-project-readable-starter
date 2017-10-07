@@ -33,29 +33,31 @@ class Posts extends Component {
 		return (
 			<Panel header={<label>Posts</label>}>
 				{posts.map((post) => (
-					<Panel collapsible bsStyle='info' header={<Row>
-						<Col xs={3}>
-							<label>{new Date(post.timestamp).toLocaleDateString()}</label>
-						</Col>
-						<Col xs={6}>
-							<label>{post.title}</label>
-						</Col>
-						<Col>
-							<label>Votescore: {post.voteScore}</label>
-						</Col>
-					</Row>}
-					footer={
-						<ButtonToolbar>
-							<ButtonGroup>
-								<Button><Glyphicon glyph="pencil" /></Button>
-								<Button id={post.id} onClick={this.handleDelete}>
-									<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
-								<Button><Glyphicon glyph="thumbs-up" /></Button>
-								<Button><Glyphicon glyph="thumbs-down" /></Button>
-							</ButtonGroup>
-						</ButtonToolbar>
-					}
-					eventKey={post.id}>
+					<Panel collapsible bsStyle='info' 
+						key={post.id}
+						header={<Row>
+							<Col xs={3}>
+								<label>{new Date(post.timestamp).toLocaleDateString()}</label>
+							</Col>
+							<Col xs={6}>
+								<label>{post.title}</label>
+							</Col>
+							<Col>
+								<label>Votescore: {post.voteScore}</label>
+							</Col>
+						</Row>}
+						footer={
+							<ButtonToolbar>
+								<ButtonGroup>
+									<Button><Glyphicon glyph="pencil" /></Button>
+									<Button id={post.id} onClick={this.handleDelete}>
+										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
+									<Button><Glyphicon glyph="thumbs-up" /></Button>
+									<Button><Glyphicon glyph="thumbs-down" /></Button>
+								</ButtonGroup>
+							</ButtonToolbar>
+						}
+						eventKey={post.id}>
 						{post.body}
 					</Panel>
 				))}
