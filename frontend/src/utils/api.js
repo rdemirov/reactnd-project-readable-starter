@@ -23,28 +23,28 @@ export default {
 			.then(posts => posts),
 
 	getPostsForCategory: (category) =>
-		fetch(`${url}:${port}/posts/:${category}`, { headers })
+		fetch(`${url}:${port}/posts/${category}`, { headers })
 			.then(res => res.json())
 			.then(posts => posts),
 
 	getCommentsForPost: (postId) =>
-		fetch(`${url}:${port}/posts/:${postId}/comments`, { headers })
+		fetch(`${url}:${port}/posts/${postId}/comments`, { headers })
 			.then(res => res.json())
 			.then(comments => comments),
 
 	getCommentDetails: (commentId) =>
-		fetch(`${url}:${port}/comments/:${commentId}`, { headers })
+		fetch(`${url}:${port}/comments/${commentId}`, { headers })
 			.then(res => res.json())
 			.then(comment => comment),
 
 	getPostDetails: (postId) =>
-		fetch(`${url}:${port}/posts/:${postId}`, { headers })
+		fetch(`${url}:${port}/posts/${postId}`, { headers })
 			.then(res => res.json())
 			.then(post => post),
 
 	editPostDetails: (params) => {
 		let { postId, title, body } = params;
-		return fetch(`${url}:${port}/posts/:${postId}`,
+		return fetch(`${url}:${port}/posts/${postId}`,
 			{ headers, method: 'PUT', body: { title, body } })
 			.then(res => res.json())
 			.then(post => post);
@@ -53,14 +53,14 @@ export default {
 	editCommentDetails: (params) => {
 		let { commentId, body } = params;
 		let timestamp = Date.now();
-		return fetch(`${url}:${port}/comments/:${commentId}`,
+		return fetch(`${url}:${port}/comments/${commentId}`,
 			{ headers, method: 'PUT', body: { timestamp, body } })
 			.then(res => res.json())
 			.then(comment => comment);
 	},
 
 	deleteComment: (commentId) =>
-		fetch(`${url}:${port}/comments/:${commentId}`,
+		fetch(`${url}:${port}/comments/${commentId}`,
 			{ headers, method: 'DELETE' })
 			.then(res => res.json())
 			.then(comment => comment),
@@ -73,7 +73,7 @@ export default {
 
 	voteForPost: (params) => {
 		let { postId, option } = params;
-		return fetch(`${url}:${port}/posts/:${postId}`,
+		return fetch(`${url}:${port}/posts/${postId}`,
 			{ headers, method: 'POST', body: { option } })
 			.then(res => res.json())
 			.then(post => post);
@@ -81,7 +81,7 @@ export default {
 
 	voteForComment: (params) => {
 		let { commentId, option } = params;
-		return fetch(`${url}:${port}/comments/:${commentId}`,
+		return fetch(`${url}:${port}/comments/${commentId}`,
 			{ headers, method: 'POST', body: { option } })
 			.then(res => res.json())
 			.then(comment => comment);
