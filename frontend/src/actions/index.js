@@ -38,7 +38,7 @@ export const removePostAsync = (postId) => dispatch => (
 );
 
 const voteForPost = (post) => ({
-	type: actionTypes.DELETE_POST,
+	type: actionTypes.VOTE_FOR_POST,
 	post
 });
 

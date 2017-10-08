@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync } from '../actions';
+import { fetchPosts, removePostAsync ,voteForPostAsync} from '../actions';
 import {
 	Panel,
 	Grid,
@@ -18,6 +18,8 @@ class Posts extends Component {
 	constructor(props) {
 		super(props);
 		this.handleDelete = this.handleDelete.bind(this);
+		this.handleUpVote = this.handleUpVote.bind(this);
+		this.handleDownVote = this.handleDownVote.bind(this);
 	}
 
 	componentDidMount() {
@@ -26,6 +28,14 @@ class Posts extends Component {
 
 	handleDelete(event) {
 		this.props.deletePost(event.target.id);
+	}
+
+	handleUpVote(event) {
+		this.props.voteForPost({postId:event.target.id,option:'upVote'});
+	}
+
+	handleDownVote(event) {
+		this.props.voteForPost({postId:event.target.id,option:'downVote'});
 	}
 
 	render() {
@@ -52,8 +62,8 @@ class Posts extends Component {
 									<Button><Glyphicon glyph="pencil" /></Button>
 									<Button id={post.id} onClick={this.handleDelete}>
 										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
-									<Button><Glyphicon glyph="thumbs-up" /></Button>
-									<Button><Glyphicon glyph="thumbs-down" /></Button>
+									<Button id={post.id} onClick={this.handleUpVote}><Glyphicon glyph="thumbs-up" /></Button>
+									<Button id={post.id} onClick={this.handleDownVote}><Glyphicon glyph="thumbs-down" /></Button>
 								</ButtonGroup>
 							</ButtonToolbar>
 						}
@@ -71,4 +81,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { fetchPosts,deletePost:removePostAsync })(Posts);
+export default connect(mapStateToProps, { fetchPosts,deletePost:removePostAsync,voteForPost:voteForPostAsync })(Posts);
