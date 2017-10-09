@@ -46,3 +46,13 @@ export const voteForPostAsync = (params) => dispatch => (
 	api.voteForPost(params)
 		.then(post => dispatch(voteForPost(post)))
 );
+
+export const openDialog = (params) => ({
+	type: actionTypes.OPEN_DIALOG,
+	params
+});
+
+export const closeDialog = (params) => ({
+	type: actionTypes.CLOSE_DIALOG,
+	params
+});
