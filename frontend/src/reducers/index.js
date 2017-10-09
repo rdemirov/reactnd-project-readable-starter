@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 import actionTypes from '../actions/actionTypes';
 
-const defaultPostsState = [];
+const defaultPostsState = {
+	postsArray: [],
+	showModal:false
+};
 const defaultCommentsState = [];
 const defaultCategoriesState = [];
 
@@ -24,10 +27,10 @@ const categoriesReducer = (state = defaultCategoriesState, action) => {
 const postsReducer = (state = defaultPostsState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_ALL_POSTS: {
-			return [...action.posts];
+			return { postsArray: action.posts };
 		}
 		case actionTypes.SORT_POSTS: {
-			let posts = state.sort((a, b) => {
+			let posts = state.postsArray.sort((a, b) => {
 				switch (action.params.sortBy) {
 					case 'dateAsc': return a.timestamp - b.timestamp;
 					case 'dateDesc': return b.timestamp - a.timestamp;
@@ -35,22 +38,22 @@ const postsReducer = (state = defaultPostsState, action) => {
 					case 'votesDesc': return b.voteScore - a.voteScore;
 				}
 			});
-			return [...posts];
+			return { postsArray: posts };
 		}
 		case actionTypes.DELETE_POST: {
-			let posts = state.filter((element) => (element.id !== action.post.id));
-			return [
-				...posts
-			];
+			let posts = state.postsArray.filter((element) => (element.id !== action.post.id));
+			return {
+				postsArray: posts
+			};
 		}
 		case actionTypes.VOTE_FOR_POST: {
-			let posts = state.map((post) => {
+			let posts = state.postsArray.map((post) => {
 				if (post.id === action.post.id) post.voteScore = action.post.voteScore;
 				return post;
 			});
-			return [
-				...posts
-			];
+			return {
+				postsArray: posts
+			};
 		}
 	}
 	return state;
