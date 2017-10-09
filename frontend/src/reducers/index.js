@@ -7,48 +7,51 @@ const defaultCategoriesState = [];
 
 const commentsReducer = (state = defaultCommentsState, action) => {
 	switch (action.type) {
-	default:
+		default:
 	}
 	return state;
 };
 
 const categoriesReducer = (state = defaultCategoriesState, action) => {
 	switch (action.type) {
-	case actionTypes.GET_ALL_CATEGORIES: {
-		return [...action.categories];
-	}
+		case actionTypes.GET_ALL_CATEGORIES: {
+			return [...action.categories];
+		}
 	}
 	return state;
 };
 
 const postsReducer = (state = defaultPostsState, action) => {
 	switch (action.type) {
-	case actionTypes.GET_ALL_POSTS: {
-		return [...action.posts];
-	}
-	case actionTypes.SORT_POSTS: {
-		let posts = state.sort((a, b) => {
-			switch (action.params.sortBy) {
-			case 'dateAsc': return a.timestamp - b.timestamp;
-			case 'dateDesc': return b.timestamp - a.timestamp;
-			case 'votesAsc': return a.voteScore - b.voteScore;
-			case 'votesDesc': return b.voteScore - a.voteScore;
-			}
-		});
-		return [...posts];
-	}
-	case actionTypes.DELETE_POST:{
-		let posts = state.filter((element)=>(element.id!==action.post.id));
-		return [
-			...posts
-		];
-	}
-	case actionTypes.VOTE_FOR_POST:{
-		return [
-			...state,
-			action.post
-		];
-	}
+		case actionTypes.GET_ALL_POSTS: {
+			return [...action.posts];
+		}
+		case actionTypes.SORT_POSTS: {
+			let posts = state.sort((a, b) => {
+				switch (action.params.sortBy) {
+					case 'dateAsc': return a.timestamp - b.timestamp;
+					case 'dateDesc': return b.timestamp - a.timestamp;
+					case 'votesAsc': return a.voteScore - b.voteScore;
+					case 'votesDesc': return b.voteScore - a.voteScore;
+				}
+			});
+			return [...posts];
+		}
+		case actionTypes.DELETE_POST: {
+			let posts = state.filter((element) => (element.id !== action.post.id));
+			return [
+				...posts
+			];
+		}
+		case actionTypes.VOTE_FOR_POST: {
+			let posts = state.map((post) => {
+				if (post.id === action.post.id) post.voteScore = action.post.voteScore;
+				return post;
+			});
+			return [
+				...posts
+			];
+		}
 	}
 	return state;
 };
