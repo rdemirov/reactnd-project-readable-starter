@@ -8,6 +8,7 @@ if (!token)
 
 const headers = {
 	'Accept': 'application/json',
+	'Content-type': 'application/json',
 	'Authorization': token
 };
 
@@ -73,8 +74,13 @@ export default {
 
 	voteForPost: (params) => {
 		let { postId, option } = params;
+		console.log(params);
 		return fetch(`${url}:${port}/posts/${postId}`,
-			{ headers, method: 'POST', body: { option } })
+			{
+				headers,
+				method: 'POST',
+				body: JSON.stringify({ option:params.option })
+			})
 			.then(res => res.json())
 			.then(post => post);
 	},
