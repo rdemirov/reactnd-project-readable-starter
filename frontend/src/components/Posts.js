@@ -26,16 +26,16 @@ class Posts extends Component {
 		this.props.fetchPosts();
 	}
 
-	handleDelete(event) {
-		this.props.deletePost(event.target.id);
+	handleDelete(postId) {
+		this.props.deletePost(postId);
 	}
 
-	handleUpVote(event) {
-		this.props.voteForPost({postId:event.target.id,option:'upVote'});
+	handleUpVote(postId) {
+		this.props.voteForPost({postId,option:'upVote'});
 	}
 
-	handleDownVote(event) {
-		this.props.voteForPost({postId:event.target.id,option:'downVote'});
+	handleDownVote(postId) {
+		this.props.voteForPost({postId,option:'downVote'});
 	}
 
 	render() {
@@ -44,7 +44,6 @@ class Posts extends Component {
 			<Panel header={<label>Posts</label>}>
 				{posts.map((post) => (
 					<Panel collapsible bsStyle='info' 
-						key={post.id}
 						header={<Row>
 							<Col xs={3}>
 								<label>{new Date(post.timestamp).toLocaleDateString()}</label>
@@ -60,10 +59,10 @@ class Posts extends Component {
 							<ButtonToolbar>
 								<ButtonGroup>
 									<Button><Glyphicon glyph="pencil" /></Button>
-									<Button id={post.id} onClick={this.handleDelete}>
+									<Button onClick={() => (this.handleDelete(post.id))}>
 										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
-									<Button id={post.id} onClick={this.handleUpVote}><Glyphicon glyph="thumbs-up" /></Button>
-									<Button id={post.id} onClick={this.handleDownVote}><Glyphicon glyph="thumbs-down" /></Button>
+									<Button onClick={() => (this.handleUpVote(post.id))}><Glyphicon glyph="thumbs-up" /></Button>
+									<Button onClick={() => (this.handleDownVote(post.id))}><Glyphicon glyph="thumbs-down" /></Button>
 								</ButtonGroup>
 							</ButtonToolbar>
 						}
