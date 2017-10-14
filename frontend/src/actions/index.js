@@ -73,5 +73,4 @@ export const getPostsForCategoryAsync = (category) => dispatch => (
 // DELETE_COMMENT: 'DELETE_COMMENT',
 // VOTE_FOR_COMMENT: 'VOTE_FOR_COMMENT',
 // ADD_COMMENT: 'ADD_COMMENT',
-// SORT_COMMENTS:'SORT_COMMENTS',
 // ADD_POST: 'ADD_POST',
