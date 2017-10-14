@@ -16,7 +16,24 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 				...action.comments
 			]
 		}
+		case actionTypes.DELETE_COMMENT: {
+			let comments = state.filter((comment) => (comment.id !== action.comment.id));
+			return [
+				...comments
+			]
+		}
+		case actionTypes.VOTE_FOR_COMMENT: {
+			let comments =  state.map((comment) => {
+				if (comment.id === action.comment.id) {comment.voteScore = action.comment.voteScore;}
+				return comment;
+			});
+			return [
+			
+				...comments
+			]
+		}
 	}
+	
 	return state;
 };
 

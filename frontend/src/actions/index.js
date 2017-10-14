@@ -94,7 +94,9 @@ const voteForComment = (comment) => ({
 
 export const voteForCommentAsync = (params) => dispatch => (
 	api.voteForComment(params)
-		.then(comment => dispatch(voteForComment(comment)))
+		.then(comment => {
+			dispatch(voteForComment(comment))
+		})
 );
 
 const addPost = (post) => ({

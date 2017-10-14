@@ -88,7 +88,11 @@ export default {
 	voteForComment: (params) => {
 		let { commentId, option } = params;
 		return fetch(`${url}:${port}/comments/${commentId}`,
-			{ headers, method: 'POST', body: { option } })
+		{
+			headers,
+			method: 'POST',
+			body: JSON.stringify({ option:params.option })
+		})
 			.then(res => res.json())
 			.then(comment => comment);
 	},

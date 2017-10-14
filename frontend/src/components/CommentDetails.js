@@ -1,8 +1,28 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon } from 'react-bootstrap';
+import {deleteCommentAsync,voteForCommentAsync} from '../actions'
 import { connect } from 'react-redux'
 class CommentDetails extends Component {
+
+    constructor(props) {
+		super(props);
+		this.handleDelete = this.handleDelete.bind(this);
+		this.handleUpVote = this.handleUpVote.bind(this);
+		this.handleDownVote = this.handleDownVote.bind(this);
+	}
+
+    handleDelete(commentId) {
+		this.props.deleteCommentAsync(commentId);
+	}
+
+	handleUpVote(commentId) {
+		this.props.voteForCommentAsync({ commentId, option: 'upVote' });
+	}
+
+	handleDownVote(commentId) {
+		this.props.voteForCommentAsync({ commentId, option: 'downVote' });
+	}
 
     render() {
         let { comment } = this.props;
@@ -42,11 +62,11 @@ class CommentDetails extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-    ...ownProps
+   comment:ownProps.comment
 })
 
 const mapDispatchToProps = {
-
+    deleteCommentAsync,voteForCommentAsync
 }
 
 
