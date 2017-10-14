@@ -56,3 +56,13 @@ export const closeDialog = (params) => ({
 	type: actionTypes.CLOSE_DIALOG,
 	params
 });
+
+const getPostsForCategory = (posts) => ({
+	type: actionTypes.FILTER_POSTS_BY_CATEGORY,
+	posts
+});
+
+export const getPostsForCategoryAsync = (category) => dispatch => (
+	api.getPostsForCategory(category)
+		.then(posts => dispatch(getPostsForCategory(posts)))
+);
