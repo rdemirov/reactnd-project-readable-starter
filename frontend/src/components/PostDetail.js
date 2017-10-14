@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Grid,Row,Col,Label} from 'react-bootstrap';
+import Comments from './Comments';
 
 
 function PostDetail(props) {
@@ -19,6 +20,9 @@ function PostDetail(props) {
                 <Col>
                     {post.body}
                 </Col>
+            </Row>
+            <Row>
+                <Comments />
             </Row>
         </Grid>
     )
