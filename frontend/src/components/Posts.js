@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts, removePostAsync, voteForPostAsync } from '../actions';
 import PostDetail from './PostDetail';
+import moment from 'moment';
 import {
 	Panel,
 	Grid,
@@ -49,8 +50,8 @@ class Posts extends Component {
 				{posts.map((post) => (
 					<Panel collapsible bsStyle='info'
 						header={<Row>
-							<Col xs={3}>
-								<label>{new Date(post.timestamp).toLocaleDateString()}</label>
+							<Col xs={6}>
+								<label>{moment(new Date(post.timestamp)).format('YYYY-MM-DD')}</label>
 							</Col>
 							<Col xs={6}>
 								<label>{post.title}</label>

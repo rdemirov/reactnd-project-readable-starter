@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon, Badge } from 'react-bootstrap';
 import { deleteCommentAsync, voteForCommentAsync } from '../actions'
 import { connect } from 'react-redux'
@@ -30,10 +31,9 @@ class CommentDetails extends Component {
             <Well >
                 <Grid>
                     <Row>
-                        <Col xs={2}>
-                            {new Date(comment.timestamp).toLocaleDateString()}
+                        <Col xs={10}>
+                       { moment(new Date(comment.timestamp)).format('YYYY-MM-DD')}
                         </Col>
-                        <Col xs={8} />
                     </Row>
                     <Row>
                         <Col>
