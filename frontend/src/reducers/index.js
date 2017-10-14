@@ -10,7 +10,12 @@ const defaultCategoriesState = [];
 
 const commentsReducer = (state = defaultCommentsState, action) => {
 	switch (action.type) {
-		default:
+		case actionTypes.GET_COMMENTS_FOR_POST: {
+			return [
+				...state,
+				...action.comments
+			]
+		}
 	}
 	return state;
 };
