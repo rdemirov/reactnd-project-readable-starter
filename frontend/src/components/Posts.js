@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts, removePostAsync, voteForPostAsync } from '../actions';
+import PostDetail from './PostDetail';
 import {
 	Panel,
 	Grid,
@@ -69,21 +70,7 @@ class Posts extends Component {
 							</ButtonToolbar>
 						}
 						eventKey={post.id}>
-                        <Grid>
-							<Row>
-								<Col xs={1}>
-								<Label>Author :</Label>
-								</Col>
-								<Col xs={6}>
-								{post.author}
-								</Col>
-							</Row>
-							<Row>
-								<Col>
-							  {post.body}
-							  </Col>
-							</Row>
-						</Grid>
+                       <PostDetail post={post} />
 					</Panel>
 				))}
 				<Modal show={this.props.showModal} onHide={this.close}>
