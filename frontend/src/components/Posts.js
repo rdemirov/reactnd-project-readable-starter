@@ -9,6 +9,7 @@ import {
 	Button,
 	ButtonToolbar,
 	ButtonGroup,
+	Label,
 	Glyphicon,
 	Modal
 
@@ -68,7 +69,21 @@ class Posts extends Component {
 							</ButtonToolbar>
 						}
 						eventKey={post.id}>
-						{post.body}
+                        <Grid>
+							<Row>
+								<Col xs={1}>
+								<Label>Author :</Label>
+								</Col>
+								<Col xs={6}>
+								{post.author}
+								</Col>
+							</Row>
+							<Row>
+								<Col>
+							  {post.body}
+							  </Col>
+							</Row>
+						</Grid>
 					</Panel>
 				))}
 				<Modal show={this.props.showModal} onHide={this.close}>
