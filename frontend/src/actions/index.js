@@ -66,3 +66,12 @@ export const getPostsForCategoryAsync = (category) => dispatch => (
 	api.getPostsForCategory(category)
 		.then(posts => dispatch(getPostsForCategory(posts)))
 );
+
+// GET_COMMENTS_FOR_POST: 'GET_COMMENTS_FOR_POST',
+// GET_COMMENT_DETAILS: 'GET_COMMENT_DETAILS',
+// EDIT_COMMENT_DETAILS: 'EDIT_COMMENT_DETAILS',
+// DELETE_COMMENT: 'DELETE_COMMENT',
+// VOTE_FOR_COMMENT: 'VOTE_FOR_COMMENT',
+// ADD_COMMENT: 'ADD_COMMENT',
+// SORT_COMMENTS:'SORT_COMMENTS',
+// ADD_POST: 'ADD_POST',
