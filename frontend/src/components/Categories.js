@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCategories } from '../actions';
+import { fetchCategories,getPostsForCategoryAsync } from '../actions';
 import {
 	Panel,
 	Nav,
@@ -18,7 +18,7 @@ class Categories extends Component {
 	}
 
 	handleSelect(selectedKey) {
-        alert('selected '+selectedKey)
+       this.props.getPostsForCategoryAsync(selectedKey);
 	}
 
 	render() {
@@ -38,7 +38,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-	fetchCategories
+	fetchCategories,
+	getPostsForCategoryAsync
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

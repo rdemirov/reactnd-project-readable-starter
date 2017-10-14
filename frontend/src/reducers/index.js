@@ -29,6 +29,11 @@ const postsReducer = (state = defaultPostsState, action) => {
 		case actionTypes.GET_ALL_POSTS: {
 			return { postsArray: action.posts };
 		}
+
+		case actionTypes.FILTER_POSTS_BY_CATEGORY: {
+			return { postsArray: action.posts };
+		}
+		
 		case actionTypes.SORT_POSTS: {
 			let posts = state.postsArray.sort((a, b) => {
 				switch (action.params.sortBy) {

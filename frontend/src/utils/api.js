@@ -24,7 +24,7 @@ export default {
 			.then(posts => posts),
 
 	getPostsForCategory: (category) =>
-		fetch(`${url}:${port}/posts/${category}`, { headers })
+		fetch(`${url}:${port}/${category}/posts`, { headers })
 			.then(res => res.json())
 			.then(posts => posts),
 
