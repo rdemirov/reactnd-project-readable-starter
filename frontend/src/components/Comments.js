@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import CommentDetails from './CommentDetails';
+
+import {Panel,Grid,Row,Col} from 'react-bootstrap';
 
 
 class Comments extends Component {
@@ -10,14 +13,18 @@ class Comments extends Component {
     }
 
     componentDidMount() {
-
+         
     }
 
     render() {
+        let comments = this.props.comments || [];
         return (
-            <div>
-
-            </div>
+           <Panel collapsible
+           header={<label>Comments {comments.length}</label>}>
+            {
+                comments.map((comment) =>(<CommentDetails comment={comment} />))
+            }
+           </Panel>
         )
     }
 }

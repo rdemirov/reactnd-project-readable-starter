@@ -22,7 +22,7 @@ function PostDetail(props) {
                 </Col>
             </Row>
             <Row>
-                <Comments />
+                <Comments postId={post.id}/>
             </Row>
         </Grid>
     )
