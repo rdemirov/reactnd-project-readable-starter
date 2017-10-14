@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import CommentDetails from './CommentDetails';
 import {getCommentsForPostAsync} from '../actions'
 
-import {Panel,Grid,Row,Col,Button} from 'react-bootstrap';
+import {Panel,Grid,Row,Col,Button,Badge} from 'react-bootstrap';
 
 
 class Comments extends Component {
@@ -21,7 +21,7 @@ class Comments extends Component {
         let comments = this.props.comments || [];
         return (
            <Panel collapsible
-           header={<span><label>Comments {comments.length}</label>  <Button>Add comment</Button></span>}>
+           header={<span><label>Comments <Badge>{comments.length}</Badge></label>  <Button>Add comment</Button></span>}>
             {
                 comments.map((comment) =>(<CommentDetails comment={comment} />))
             }
