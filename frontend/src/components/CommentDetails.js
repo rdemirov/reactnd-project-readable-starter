@@ -47,9 +47,9 @@ class CommentDetails extends Component {
                                 <Button onClick={() => (this.handleDelete(comment.id))}>
                                     <Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
                                 <Button onClick={() => (this.handleUpVote(comment.id))}>
-                                    <Glyphicon glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{comment.voteScore > 0 ? comment.voteScore : ''}</Badge></Button>
+                                    <Glyphicon style={{ color: 'green' }} glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{comment.voteScore > 0 ? comment.voteScore : ''}</Badge></Button>
                                 <Button onClick={() => (this.handleDownVote(comment.id))}>
-                                    <Glyphicon glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{comment.voteScore < 0 ? comment.voteScore : ''}</Badge></Button>
+                                    <Glyphicon style={{ color: 'red' }} glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{comment.voteScore < 0 ? comment.voteScore : ''}</Badge></Button>
                             </ButtonGroup>
                         </ButtonToolbar>
                     </Row>

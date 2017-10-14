@@ -20,7 +20,6 @@ class Header extends Component {
 				</div>
 				<ButtonToolbar>
 					<ButtonGroup bsSize="large">
-						<Button bsStyle='primary'>Add new post</Button>
 						<Button onClick={()=>(sortPosts({sortBy:'dateDesc'}))}>Newest </Button>
 						<Button onClick={()=>(sortPosts({sortBy:'dateAsc'}))}>Oldest</Button>
 						<Button onClick={()=>(sortPosts({sortBy:'votesDesc'}))}>Most voted</Button>

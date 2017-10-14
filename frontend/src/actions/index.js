@@ -47,16 +47,6 @@ export const voteForPostAsync = (params) => dispatch => (
 		.then(post => dispatch(voteForPost(post)))
 );
 
-export const openDialog = (params) => ({
-	type: actionTypes.OPEN_DIALOG,
-	params
-});
-
-export const closeDialog = (params) => ({
-	type: actionTypes.CLOSE_DIALOG,
-	params
-});
-
 const getPostsForCategory = (posts) => ({
 	type: actionTypes.FILTER_POSTS_BY_CATEGORY,
 	posts
@@ -118,5 +108,11 @@ export const addCommentAsync = (params) => dispatch => (
 	api.addNewComment(params)
 		.then(comment => dispatch(addComment(comment)))
 );
-// GET_COMMENT_DETAILS: 'GET_COMMENT_DETAILS',
-// EDIT_COMMENT_DETAILS: 'EDIT_COMMENT_DETAILS',
+
+export const openDialog = () => ({
+	type: actionTypes.OPEN_DIALOG
+});
+
+export const closeDialog = () => ({
+	type:  actionTypes.CLOSE_DIALOG
+});

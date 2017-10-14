@@ -44,7 +44,7 @@ class Posts extends Component {
 	render() {
 		let { posts } = this.props;
 		return (
-			<Panel header={<label>Posts</label>}>
+			<Panel header={<span><label>Posts</label> <Button style={{float:'right'}}>Add Post</Button></span>}>
 				{posts.map((post) => (
 					<Panel collapsible bsStyle='info'
 						header={<Row>

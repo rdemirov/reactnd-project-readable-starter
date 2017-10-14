@@ -79,6 +79,18 @@ const postsReducer = (state = defaultPostsState, action) => {
 				postsArray: posts
 			};
 		}
+		case actionTypes.OPEN_DIALOG: {
+			return {
+				...state,
+				showModal:true
+			}
+		}
+		case actionTypes.CLOSE_DIALOG: {
+			return {
+				...state,
+				showModal:false
+			}
+		}
 	}
 	return state;
 };
