@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync, voteForPostAsync } from '../actions';
+import { fetchPosts, removePostAsync, voteForPostAsync,openDialog,closeDialog } from '../actions';
 import PostDetail from './PostDetail';
+import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import moment from 'moment';
 import {
 	Panel,
@@ -25,6 +26,7 @@ class Posts extends Component {
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleUpVote = this.handleUpVote.bind(this);
 		this.handleDownVote = this.handleDownVote.bind(this);
+		this.openDialog = this.openDialog.bind(this);
 	}
 
 	componentDidMount() {
@@ -33,6 +35,10 @@ class Posts extends Component {
 
 	handleDelete(postId) {
 		this.props.deletePost(postId);
+	}
+
+	openDialog() {
+		this.props.openDialog();
 	}
 
 	handleUpVote(postId) {
@@ -44,11 +50,11 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts } = this.props;
+		let { posts,closeDialog,showModal } = this.props;
 		return (
-			<Panel header={<span><label>Posts</label> <Button style={{float:'right'}}>Add Post</Button></span>}>
+			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{float:'right'}}>Add Post</Button></span>}>
 				{posts.map((post) => (
-					<Panel collapsible bsStyle='info'
+					<Panel collapsible key={post.id} bsStyle='info'
 						header={<Row>
 							<Col xs={6}>
 								<label>{moment(new Date(post.timestamp)).format('YYYY-MM-DD')}</label>
@@ -71,33 +77,14 @@ class Posts extends Component {
 							</ButtonToolbar>
 						}
 						eventKey={post.id}>
-                       <PostDetail post={post} />
+                       <PostDetail key={post.id} post={post} />
 					</Panel>
 				))}
-				<Modal show={this.props.showModal} onHide={this.close}>
-				<Modal.Header closeButton>
-				  <Modal.Title>Modal heading</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>
-
-	  
-				  <hr />
-	  
-				  <h4>Overflowing text to show scroll behavior</h4>
-				  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-				  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-				  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-				  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-				  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-				  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-				  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-				  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-				  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-				</Modal.Body>
-				<Modal.Footer>
-				  <Button onClick={this.close}>Close</Button>
-				</Modal.Footer>
-			  </Modal>
+			<CreateUpdatePostDialog 
+			showDialog={showModal}
+            closeDialog={closeDialog}
+			
+			/>
 			</Panel>
 		);
 	}
@@ -105,8 +92,8 @@ class Posts extends Component {
 
 const mapStateToProps = (state) => ({
 	posts: state.posts.postsArray,
-	showModal:state.showModal
+	showModal:state.posts.showModal
 });
 
 
-export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync })(Posts);
+export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync,openDialog,closeDialog })(Posts);

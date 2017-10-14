@@ -18,7 +18,7 @@ class Categories extends Component {
 	}
 
 	handleSelect(selectedKey) {
-		if (selectedKey != 'all')
+		if (selectedKey !== 'all')
 			this.props.getPostsForCategoryAsync(selectedKey);
 		else this.props.fetchPosts();
 	}

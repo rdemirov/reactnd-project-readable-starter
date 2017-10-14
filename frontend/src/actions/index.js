@@ -109,10 +109,12 @@ export const addCommentAsync = (params) => dispatch => (
 		.then(comment => dispatch(addComment(comment)))
 );
 
-export const openDialog = () => ({
-	type: actionTypes.OPEN_DIALOG
+export const openDialog = (params) => ({
+	type: actionTypes.OPEN_DIALOG,
+	params
 });
 
-export const closeDialog = () => ({
-	type:  actionTypes.CLOSE_DIALOG
+export const closeDialog = (params) => ({
+	type:  actionTypes.CLOSE_DIALOG,
+	params
 });

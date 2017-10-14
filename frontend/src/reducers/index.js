@@ -46,7 +46,8 @@ const categoriesReducer = (state = defaultCategoriesState, action) => {
 const postsReducer = (state = defaultPostsState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_ALL_POSTS: {
-			return { postsArray: action.posts };
+			return {   ...state,
+				       postsArray: action.posts };
 		}
 
 		case actionTypes.FILTER_POSTS_BY_CATEGORY: {
