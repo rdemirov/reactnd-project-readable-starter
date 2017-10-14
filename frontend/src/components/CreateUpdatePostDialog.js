@@ -1,38 +1,83 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Row, Col, Form, FormControl, ControlLabel, FormGroup, Modal } from 'react-bootstrap';
+import {
+    Button,
+    Row,
+    Col,
+    Form,
+    FormControl,
+    ControlLabel,
+    FormGroup,
+    Modal,
+    Clearfix
+} from 'react-bootstrap';
 
 class CreateUpdatePostDialog extends Component {
-    static propTypes = {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            formData: {
+                author: 'anonymous',
+                title: '',
+                body: ''
+            },
+            validations: {
+                author: null,
+                title: null,
+                body: null
+            }
+        };
     }
 
     render() {
         let { showDialog, closeDialog } = this.props;
         return (
-            <Modal show={showDialog} onHide={closeDialog}>
+            <Modal show={showDialog} bsSize="large" onHide={closeDialog}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>ADD/EDIT POST</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Text in a modal</h4>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-                    <hr />
-
-                    <h4>Overflowing text to show scroll behavior</h4>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <Form horizontal>
+                        <FormGroup
+                            controlId="author">
+                            <Col xs={2}>
+                                <ControlLabel>Author </ControlLabel>
+                            </Col>
+                            <Col xs={10}>
+                                <FormControl
+                                    type='text'
+                                    placeholder='Enter post author'
+                                />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup controlId="title">
+                            <Col xs={2}>
+                                <ControlLabel>Title </ControlLabel>
+                            </Col>
+                            <Col xs={10}>
+                                <FormControl
+                                    type='text'
+                                    placeholder='Enter post title'
+                                />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup controlId="body">
+                            <Col xs={1}>
+                                <ControlLabel>Body</ControlLabel>
+                            </Col>
+                            <Col xs={11}>
+                                <FormControl
+                                    rows={10}
+                                    componentClass="textarea"
+                                    placeholder="Enter post body" />
+                            </Col>
+                        </FormGroup>
+                        <Clearfix />
+                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={closeDialog}>Close</Button>
+                    <Button bsStyle='danger' onClick={closeDialog}>Cancel</Button>
+                    <Button bsStyle='success' onClick={closeDialog}>Confirm</Button>
                 </Modal.Footer>
             </Modal>
         )
