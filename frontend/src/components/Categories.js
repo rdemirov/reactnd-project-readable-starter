@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCategories,getPostsForCategoryAsync } from '../actions';
+import { fetchCategories, getPostsForCategoryAsync, fetchPosts } from '../actions';
 import {
 	Panel,
 	Nav,
@@ -18,7 +18,9 @@ class Categories extends Component {
 	}
 
 	handleSelect(selectedKey) {
-       this.props.getPostsForCategoryAsync(selectedKey);
+		if (selectedKey != 'all')
+			this.props.getPostsForCategoryAsync(selectedKey);
+		else this.props.fetchPosts();
 	}
 
 	render() {
@@ -26,6 +28,7 @@ class Categories extends Component {
 		return (
 			<Panel bsStyle={'info'} header={'Categories'}>
 				<Nav bsStyle="pills" activeKey={1} onSelect={this.handleSelect}>
+					<NavItem eventKey={'all'} key={'all'}>{'All'}</NavItem>
 					{categories.map((element) => (<NavItem eventKey={element.path} key={element.path}>{element.name}</NavItem>))}
 				</Nav>
 			</Panel>
@@ -39,7 +42,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	fetchCategories,
-	getPostsForCategoryAsync
+	getPostsForCategoryAsync,
+	fetchPosts
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
