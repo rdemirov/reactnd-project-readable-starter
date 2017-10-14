@@ -23,14 +23,11 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 			]
 		}
 		case actionTypes.VOTE_FOR_COMMENT: {
-			let comments =  state.map((comment) => {
-				if (comment.id === action.comment.id) {comment.voteScore = action.comment.voteScore;}
-				return comment;
-			});
-			return [
-			
-				...comments
-			]
+			return state.map((comment)=>{
+				if(comment.id===action.comment.id) return action.comment;
+				else return comment; 
+			})
+
 		}
 	}
 	

@@ -20,8 +20,10 @@ class Comments extends Component {
     render() {
         let comments = this.props.comments || [];
         return (
-           <Panel collapsible
-           header={<span><label>Comments <Badge>{comments.length}</Badge></label>  <Button>Add comment</Button></span>}>
+           <Panel 
+           style={{width:'95%'}}
+           collapsible
+           header={<span><label>Comments <Badge>{comments.length}</Badge></label>  <Button style={{float:'right'}}>Add comment</Button></span>}>
             {
                 comments.map((comment) =>(<CommentDetails comment={comment} />))
             }

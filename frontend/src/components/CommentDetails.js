@@ -1,46 +1,43 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon } from 'react-bootstrap';
-import {deleteCommentAsync,voteForCommentAsync} from '../actions'
+import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon, Badge } from 'react-bootstrap';
+import { deleteCommentAsync, voteForCommentAsync } from '../actions'
 import { connect } from 'react-redux'
 class CommentDetails extends Component {
 
     constructor(props) {
-		super(props);
-		this.handleDelete = this.handleDelete.bind(this);
-		this.handleUpVote = this.handleUpVote.bind(this);
-		this.handleDownVote = this.handleDownVote.bind(this);
-	}
+        super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleUpVote = this.handleUpVote.bind(this);
+        this.handleDownVote = this.handleDownVote.bind(this);
+    }
 
     handleDelete(commentId) {
-		this.props.deleteCommentAsync(commentId);
-	}
+        this.props.deleteCommentAsync(commentId);
+    }
 
-	handleUpVote(commentId) {
-		this.props.voteForCommentAsync({ commentId, option: 'upVote' });
-	}
+    handleUpVote(commentId) {
+        this.props.voteForCommentAsync({ commentId, option: 'upVote' });
+    }
 
-	handleDownVote(commentId) {
-		this.props.voteForCommentAsync({ commentId, option: 'downVote' });
-	}
+    handleDownVote(commentId) {
+        this.props.voteForCommentAsync({ commentId, option: 'downVote' });
+    }
 
     render() {
         let { comment } = this.props;
         return (
-            <Well>
+            <Well >
                 <Grid>
                     <Row>
                         <Col xs={2}>
                             {new Date(comment.timestamp).toLocaleDateString()}
                         </Col>
                         <Col xs={8} />
-                        <Col xs={4}>
-                            {comment.voteScore}
-                        </Col>
                     </Row>
                     <Row>
                         <Col>
-                           <Well> {comment.body}</Well>
+                            <Well style={{ width: '88%' }}> {comment.body}</Well>
                         </Col>
                     </Row>
                     <Row>
@@ -49,8 +46,10 @@ class CommentDetails extends Component {
                                 <Button><Glyphicon glyph="pencil" /></Button>
                                 <Button onClick={() => (this.handleDelete(comment.id))}>
                                     <Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
-                                <Button onClick={() => (this.handleUpVote(comment.id))}><Glyphicon glyph="thumbs-up" /></Button>
-                                <Button onClick={() => (this.handleDownVote(comment.id))}><Glyphicon glyph="thumbs-down" /></Button>
+                                <Button onClick={() => (this.handleUpVote(comment.id))}>
+                                    <Glyphicon glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{comment.voteScore > 0 ? comment.voteScore : ''}</Badge></Button>
+                                <Button onClick={() => (this.handleDownVote(comment.id))}>
+                                    <Glyphicon glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{comment.voteScore < 0 ? comment.voteScore : ''}</Badge></Button>
                             </ButtonGroup>
                         </ButtonToolbar>
                     </Row>
@@ -62,11 +61,11 @@ class CommentDetails extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-   comment:ownProps.comment
+    comment: ownProps.comment
 })
 
 const mapDispatchToProps = {
-    deleteCommentAsync,voteForCommentAsync
+    deleteCommentAsync, voteForCommentAsync
 }
 
 
