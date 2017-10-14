@@ -67,10 +67,54 @@ export const getPostsForCategoryAsync = (category) => dispatch => (
 		.then(posts => dispatch(getPostsForCategory(posts)))
 );
 
-// GET_COMMENTS_FOR_POST: 'GET_COMMENTS_FOR_POST',
+const getCommentsForPost = (comments) => ({
+	type: actionTypes.GET_COMMENTS_FOR_POST,
+	comments
+});
+
+export const getCommentsForPostAsync = (postId) => dispatch => (
+	api.getCommentsForPost(postId)
+		.then(comments => dispatch(getCommentsForPost(comments)))
+);
+
+const deleteComment = (comment) => ({
+	type: actionTypes.DELETE_COMMENT,
+	comment
+});
+
+export const deleteCommentAsync = (commentId) => dispatch => (
+	api.deleteComment(commentId)
+		.then(comment => dispatch(deleteComment(comment)))
+);
+
+const voteForComment = (comment) => ({
+	type: actionTypes.VOTE_FOR_COMMENT,
+	comment
+});
+
+export const voteForCommentAsync = (params) => dispatch => (
+	api.voteForComment(params)
+		.then(comment => dispatch(voteForComment(comment)))
+);
+
+const addPost = (post) => ({
+	type: actionTypes.ADD_POST,
+	post
+});
+
+export const addPostAsync = (params) => dispatch => (
+	api.addNewPost(params)
+		.then(post => dispatch(addPost(post)))
+);
+
+const addComment = (comment) => ({
+	type: actionTypes.ADD_COMMENT,
+	comment
+});
+
+export const addCommentAsync = (params) => dispatch => (
+	api.addNewComment(params)
+		.then(comment => dispatch(addComment(comment)))
+);
 // GET_COMMENT_DETAILS: 'GET_COMMENT_DETAILS',
 // EDIT_COMMENT_DETAILS: 'EDIT_COMMENT_DETAILS',
-// DELETE_COMMENT: 'DELETE_COMMENT',
-// VOTE_FOR_COMMENT: 'VOTE_FOR_COMMENT',
-// ADD_COMMENT: 'ADD_COMMENT',
-// ADD_POST: 'ADD_POST',
