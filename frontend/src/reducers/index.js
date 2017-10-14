@@ -33,7 +33,7 @@ const postsReducer = (state = defaultPostsState, action) => {
 		case actionTypes.FILTER_POSTS_BY_CATEGORY: {
 			return { postsArray: action.posts };
 		}
-		
+
 		case actionTypes.SORT_POSTS: {
 			let posts = state.postsArray.sort((a, b) => {
 				switch (action.params.sortBy) {
@@ -43,7 +43,7 @@ const postsReducer = (state = defaultPostsState, action) => {
 					case 'votesDesc': return b.voteScore - a.voteScore;
 				}
 			});
-			return { postsArray: posts };
+			return { postsArray: [...posts] };
 		}
 		case actionTypes.DELETE_POST: {
 			let posts = state.postsArray.filter((element) => (element.id !== action.post.id));
