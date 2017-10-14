@@ -12,7 +12,8 @@ import {
 	ButtonGroup,
 	Label,
 	Glyphicon,
-	Modal
+	Modal,
+	Badge
 
 } from 'react-bootstrap';
 
@@ -54,9 +55,6 @@ class Posts extends Component {
 							<Col xs={6}>
 								<label>{post.title}</label>
 							</Col>
-							<Col>
-								<label>Votescore: {post.voteScore}</label>
-							</Col>
 						</Row>}
 						footer={
 							<ButtonToolbar>
@@ -64,8 +62,10 @@ class Posts extends Component {
 									<Button><Glyphicon glyph="pencil" /></Button>
 									<Button onClick={() => (this.handleDelete(post.id))}>
 										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
-									<Button onClick={() => (this.handleUpVote(post.id))}><Glyphicon glyph="thumbs-up" /></Button>
-									<Button onClick={() => (this.handleDownVote(post.id))}><Glyphicon glyph="thumbs-down" /></Button>
+									<Button onClick={() => (this.handleUpVote(post.id))}>
+									<Glyphicon style={{ color: 'green' }} glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{post.voteScore > 0 ? post.voteScore : ''}</Badge></Button>
+									<Button onClick={() => (this.handleDownVote(post.id))}>
+									<Glyphicon style={{ color: 'red' }} glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{post.voteScore < 0 ? post.voteScore : ''}</Badge></Button>
 								</ButtonGroup>
 							</ButtonToolbar>
 						}
