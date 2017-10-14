@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import NotFound from './components/NotFound';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducer from './reducers';
 
 
@@ -17,6 +19,11 @@ const store = createStore(reducer,
 );
 
 ReactDOM.render(<Provider store={store}>
-	<App />
+	<BrowserRouter>
+		<Switch>
+			<Route exact path='/' component={App} />
+			<Route path='*' component={NotFound} />
+		</Switch>
+	</BrowserRouter>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();
