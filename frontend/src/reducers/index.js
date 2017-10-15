@@ -37,7 +37,7 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 				commentsArray: state.commentsArray.map((comment) => {
 					if (comment.id === action.comment.id) return action.comment;
 					else return comment;
-				})
+				}).sort((a, b) => (b.voteScore - a.voteScore))
 			}
 
 		}
@@ -124,7 +124,7 @@ const postsReducer = (state = defaultPostsState, action) => {
 			let posts = state.postsArray.map((post) => {
 				if (post.id === action.post.id) post.voteScore = action.post.voteScore;
 				return post;
-			});
+			}).sort((a, b) => (b.voteScore - a.voteScore))
 			return {
 				postsArray: posts
 			};
