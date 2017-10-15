@@ -22,13 +22,15 @@ react-bootstrap components for the layout. It includes the following files:
   |-- App.js - Main application component.Renders the header,categories and posts components
   |-- Categories.js - Display of the posts' categories.Calls the action for filtering of posts by category
   |-- CommentDetails.js - Contains details for a comment and the buttons for edit,delete and voting for a comment
-  |-- Comments.js - Main component for the comments.Contains a panel with comments header ,count of comments for a given post and a button for comments addition
+  |-- Comments.js - Main component for the comments.Contains a panel with comments header ,
+  count of comments for a given post and a button for comments addition
   |-- CreateUpdateCommentDialog.js - Dialog for create/update of comments
   |-- CreateUpdatePostDialog.js - Add/edit posts dialog
   |-- Header.js - Page Header components.Contains buttons for sorting of posts by vote and date
   |-- NotFound.js - 404 page of the app
   |-- PostDetail.js - posts detail view component.Contains the author and body of a post and is rendered inside the post's panel 
-  |-- Posts.js - Main component for viewing the posts.Contains a panel with nested collapsible panels for the posts.The button for new posts addition is on the panel's header.
+  |-- Posts.js - Main component for viewing the posts.Contains a panel with nested collapsible panels for the posts.
+  The button for new posts addition is on the panel's header.
   At the posts panels' footer are the buttons for post edit,deletion and voting.
 |-- .gitignore 
 |-- README.MD - This README file.
