@@ -77,19 +77,19 @@ class CreateUpdatePostDialog extends Component {
                         <FormGroup>
 
                             <Col xs={2}>
-                            <FormGroup  validationState={this.state.validations.author}>
-                                <ControlLabel>Author </ControlLabel>
+                                <FormGroup validationState={this.state.validations.author}>
+                                    <ControlLabel>Author </ControlLabel>
                                 </FormGroup>
                             </Col>
                             <Col xs={4}>
-                            <FormGroup  validationState={this.state.validations.author}>
-                                <FormControl
-                                    type='text'
-                                    id='author'
-                                    placeholder='Enter post author'
-                                    value={author}
-                                    onChange={this.handleChange}
-                                />
+                                <FormGroup validationState={this.state.validations.author}>
+                                    <FormControl
+                                        type='text'
+                                        id='author'
+                                        placeholder='Enter post author'
+                                        value={author}
+                                        onChange={this.handleChange}
+                                    />
                                 </FormGroup>
                             </Col>
 
@@ -106,7 +106,7 @@ class CreateUpdatePostDialog extends Component {
                                 </FormControl>
                             </Col>
                         </FormGroup>
-                        <FormGroup controlId="title"  validationState={this.state.validations.title}>
+                        <FormGroup controlId="title" validationState={this.state.validations.title}>
                             <Col xs={2}>
                                 <ControlLabel>Title </ControlLabel>
                             </Col>
@@ -119,7 +119,7 @@ class CreateUpdatePostDialog extends Component {
                                 />
                             </Col>
                         </FormGroup>
-                        <FormGroup controlId="body"  validationState={this.state.validations.body}>
+                        <FormGroup controlId="body" validationState={this.state.validations.body}>
                             <Col xs={1}>
                                 <ControlLabel>Body</ControlLabel>
                             </Col>

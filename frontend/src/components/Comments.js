@@ -11,7 +11,11 @@ import { Panel, Grid, Row, Col, Button, Badge } from 'react-bootstrap';
 class Comments extends Component {
     constructor(props) {
         super(props)
+        this.handleOpenDialog=this.handleOpenDialog.bind(this);
+    }
 
+    handleOpenDialog () {
+        this.props.openCommentsDialog({postId:this.props.postId})
     }
 
     componentDidMount() {
@@ -25,7 +29,7 @@ class Comments extends Component {
             <Panel
                 style={{ width: '95%' }}
                 header={<span><label>Comments <Badge>{comments.length}</Badge></label>
-                    <Button style={{ float: 'right' }} onClick={this.props.openCommentsDialog}>Add comment</Button></span>}>
+                    <Button style={{ float: 'right' }} onClick={this.handleOpenDialog}>Add comment</Button></span>}>
                 {
                     comments.map((comment) => (<CommentDetails key={comment.id} comment={comment} />))
                 }
@@ -33,6 +37,8 @@ class Comments extends Component {
                     showDialog={showModal}
                     closeDialog={closeCommentsDialog}
                     handleSubmit={addCommentAsync}
+                    addComment={addCommentAsync}
+                    parentId={this.props.parentId}
                 />
             </Panel>
         )
@@ -46,6 +52,7 @@ Comments.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
     comments: state.comments.commentsArray.filter((element) => ((element.parentId === ownProps.postId))),
     showModal: state.comments.showModal,
+    parentId:state.comments.selectedPostId,
     ...ownProps
 })
 

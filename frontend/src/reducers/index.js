@@ -7,7 +7,8 @@ const defaultPostsState = {
 };
 const defaultCommentsState = {
 	commentsArray: [],
-	showModal: false
+	showModal: false,
+	selectedPostId:''
 };
 const defaultCategoriesState = [];
 
@@ -40,7 +41,8 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 		case actionTypes.OPEN_COMMENTS_DIALOG: {
 			return {
 				...state,
-				showModal: true
+				showModal: true,
+				selectedPostId:action.params.postId
 			}
 
 		}
@@ -53,7 +55,8 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 		case actionTypes.ADD_COMMENT: {
 			return {
 				...state,
-				commentsArray: [...state.commentsArray, action.comment]
+				commentsArray: [...state.commentsArray, action.comment],
+				showModal:false
 			}
 		}
 		
