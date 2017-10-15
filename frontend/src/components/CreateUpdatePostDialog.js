@@ -93,7 +93,7 @@ class CreateUpdatePostDialog extends Component {
                         <FormGroup>
                             <Col xs={2}>
                                 <FormGroup validationState={this.state.validations.author}>
-                                    <ControlLabel>Author </ControlLabel>
+                                    <ControlLabel  style={{paddingLeft:'10%'}}>Author </ControlLabel>
                                 </FormGroup>
                             </Col>
                             <Col xs={4}>
