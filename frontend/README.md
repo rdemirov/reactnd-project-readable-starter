@@ -42,3 +42,18 @@ used in the project.
 
 ## Readable frontend app functional description
 
+The main screen of the readable app shows the buttons for sorting of the posts,the filters panel with the list
+of categories for the posts and the posts panel with the button for adding a new post and the existing posts.
+
+![Main screen](./assets/images/mainScreen.PNG)
+
+### Page header 
+
+![Header](./assets/images/header.PNG)
+
+Using the four buttons found at the page header,you can sort the posts in the following ways : 
+
+* NEWEST - by descending order of date 
+* OLDEST - by ascending order of date 
+* MOST VOTED - by descending voteScore
+* LEAST VOTED - by ascending voteScore
