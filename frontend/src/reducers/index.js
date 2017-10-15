@@ -56,6 +56,7 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 				commentsArray: [...state.commentsArray, action.comment]
 			}
 		}
+		
 	}
 
 	return state;

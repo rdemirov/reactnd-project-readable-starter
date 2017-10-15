@@ -18,8 +18,8 @@ class CreateUpdatePostDialog extends Component {
         this.state = {
             formData: {
                 author: 'anonymous',
-                body:'',
-                title:''
+                body: '',
+                title: ''
             },
             validations: {
                 author: null,
@@ -47,7 +47,21 @@ class CreateUpdatePostDialog extends Component {
     }
 
     handleSubmit() {
-        this.props.addPost(this.state.formData);
+        let validationFlag = true;
+        let formData = this.state.formData;
+        let validations = this.state.validations;
+        for (let key in formData) {
+            if (!formData[key] || formData[key].length === 0) {
+                validations[key] = 'error';
+                validationFlag = false;
+            } else validations[key] = 'success';
+        }
+
+        if (!validationFlag) this.setState({
+            ...this.state,
+            validations
+        })
+        else this.props.addPost(formData);
     }
 
     render() {
@@ -61,10 +75,14 @@ class CreateUpdatePostDialog extends Component {
                 <Modal.Body>
                     <Form horizontal>
                         <FormGroup>
+
                             <Col xs={2}>
+                            <FormGroup  validationState={this.state.validations.author}>
                                 <ControlLabel>Author </ControlLabel>
+                                </FormGroup>
                             </Col>
                             <Col xs={4}>
+                            <FormGroup  validationState={this.state.validations.author}>
                                 <FormControl
                                     type='text'
                                     id='author'
@@ -72,7 +90,9 @@ class CreateUpdatePostDialog extends Component {
                                     value={author}
                                     onChange={this.handleChange}
                                 />
+                                </FormGroup>
                             </Col>
+
                             <Col xs={2}>
                                 <ControlLabel>Category </ControlLabel>
                             </Col>
@@ -86,7 +106,7 @@ class CreateUpdatePostDialog extends Component {
                                 </FormControl>
                             </Col>
                         </FormGroup>
-                        <FormGroup controlId="title">
+                        <FormGroup controlId="title"  validationState={this.state.validations.title}>
                             <Col xs={2}>
                                 <ControlLabel>Title </ControlLabel>
                             </Col>
@@ -99,7 +119,7 @@ class CreateUpdatePostDialog extends Component {
                                 />
                             </Col>
                         </FormGroup>
-                        <FormGroup controlId="body">
+                        <FormGroup controlId="body"  validationState={this.state.validations.body}>
                             <Col xs={1}>
                                 <ControlLabel>Body</ControlLabel>
                             </Col>
