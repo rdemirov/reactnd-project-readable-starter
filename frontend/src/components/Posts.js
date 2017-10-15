@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync, voteForPostAsync,openDialog,closeDialog } from '../actions';
+import { fetchPosts, removePostAsync, voteForPostAsync, openDialog, closeDialog } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import moment from 'moment';
@@ -50,9 +50,9 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts,closeDialog,showModal } = this.props;
+		let { posts, closeDialog, showModal, categories } = this.props;
 		return (
-			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{float:'right'}}>Add Post</Button></span>}>
+			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				{posts.map((post) => (
 					<Panel collapsible key={post.id} bsStyle='info'
 						header={<Row>
@@ -66,25 +66,25 @@ class Posts extends Component {
 						footer={
 							<ButtonToolbar>
 								<ButtonGroup>
-									<Button  onClick={this.openDialog}><Glyphicon glyph="pencil" /></Button>
+									<Button onClick={this.openDialog}><Glyphicon glyph="pencil" /></Button>
 									<Button onClick={() => (this.handleDelete(post.id))}>
 										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
 									<Button onClick={() => (this.handleUpVote(post.id))}>
-									<Glyphicon style={{ color: 'green' }} glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{post.voteScore > 0 ? post.voteScore : ''}</Badge></Button>
+										<Glyphicon style={{ color: 'green' }} glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{post.voteScore > 0 ? post.voteScore : ''}</Badge></Button>
 									<Button onClick={() => (this.handleDownVote(post.id))}>
-									<Glyphicon style={{ color: 'red' }} glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{post.voteScore < 0 ? post.voteScore : ''}</Badge></Button>
+										<Glyphicon style={{ color: 'red' }} glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{post.voteScore < 0 ? post.voteScore : ''}</Badge></Button>
 								</ButtonGroup>
 							</ButtonToolbar>
 						}
 						eventKey={post.id}>
-                       <PostDetail key={post.id} post={post} />
+						<PostDetail key={post.id} post={post} />
 					</Panel>
 				))}
-			<CreateUpdatePostDialog 
-			showDialog={showModal}
-            closeDialog={closeDialog}
-			
-			/>
+				<CreateUpdatePostDialog
+					showDialog={showModal}
+					closeDialog={closeDialog}
+					categories={categories}
+				/>
 			</Panel>
 		);
 	}
@@ -92,8 +92,9 @@ class Posts extends Component {
 
 const mapStateToProps = (state) => ({
 	posts: state.posts.postsArray,
-	showModal:state.posts.showModal
+	showModal: state.posts.showModal,
+	categories: state.categories
 });
 
 
-export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync,openDialog,closeDialog })(Posts);
+export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync, openDialog, closeDialog })(Posts);

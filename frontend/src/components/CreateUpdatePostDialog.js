@@ -30,7 +30,7 @@ class CreateUpdatePostDialog extends Component {
     }
 
     render() {
-        let { showDialog, closeDialog } = this.props;
+        let { showDialog, closeDialog, categories } = this.props;
         return (
             <Modal show={showDialog} bsSize="large" onHide={closeDialog}>
                 <Modal.Header closeButton>
@@ -43,11 +43,20 @@ class CreateUpdatePostDialog extends Component {
                             <Col xs={2}>
                                 <ControlLabel>Author </ControlLabel>
                             </Col>
-                            <Col xs={10}>
+                            <Col xs={4}>
                                 <FormControl
                                     type='text'
                                     placeholder='Enter post author'
                                 />
+                            </Col>
+                            <Col xs={2}>
+                                <ControlLabel>Category </ControlLabel>
+                            </Col>
+                            <Col xs={4}>
+                                <FormControl
+                                    componentClass='select'>
+                                    {categories.map((element) => (<option value={element.path}>{element.name}</option>))}
+                                </FormControl>
                             </Col>
                         </FormGroup>
                         <FormGroup controlId="title">
