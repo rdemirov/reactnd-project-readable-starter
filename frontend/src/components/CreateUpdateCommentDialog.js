@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
     Button,
-    Row,
     Col,
     Form,
     FormControl,
@@ -12,7 +11,7 @@ import {
     Clearfix
 } from 'react-bootstrap';
 
-class CreateUpdatePostDialog extends Component {
+class CreateUpdateCommentDialog extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -133,4 +132,14 @@ class CreateUpdatePostDialog extends Component {
     }
 }
 
-export default CreateUpdatePostDialog;
+CreateUpdateCommentDialog.PropTypes={
+    showDialog: PropTypes.bool.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    addComment: PropTypes.func.isRequired,
+    editComment: PropTypes.func.isRequired,
+    parentId: PropTypes.string,
+    editFlag: PropTypes.bool.isRequired,
+    commentToEdit: PropTypes.object
+}
+
+export default CreateUpdateCommentDialog;

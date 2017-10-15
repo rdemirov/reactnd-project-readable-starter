@@ -162,4 +162,14 @@ class CreateUpdatePostDialog extends Component {
     }
 }
 
+CreateUpdatePostDialog.propTypes = {
+    showDialog: PropTypes.bool.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    categories: PropTypes.arrayOf(PropTypes.object),
+    addPost: PropTypes.func.isRequired,
+    editPost: PropTypes.func.isRequired,
+    editFlag: PropTypes.bool.isRequired,
+    postToEdit: PropTypes.object
+}
+
 export default CreateUpdatePostDialog;
