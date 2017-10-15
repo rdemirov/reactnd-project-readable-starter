@@ -75,10 +75,10 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 				showModal: false
 			}
 		}
+		default: return state;
 
 	}
 
-	return state;
 };
 
 const categoriesReducer = (state = defaultCategoriesState, action) => {
@@ -86,8 +86,9 @@ const categoriesReducer = (state = defaultCategoriesState, action) => {
 		case actionTypes.GET_ALL_CATEGORIES: {
 			return [...action.categories];
 		}
+		default: return state;
 	}
-	return state;
+
 };
 
 const postsReducer = (state = defaultPostsState, action) => {
@@ -110,6 +111,7 @@ const postsReducer = (state = defaultPostsState, action) => {
 					case 'dateDesc': return b.timestamp - a.timestamp;
 					case 'votesAsc': return a.voteScore - b.voteScore;
 					case 'votesDesc': return b.voteScore - a.voteScore;
+					default: return 1;
 				}
 			});
 			return { postsArray: [...posts] };
@@ -161,8 +163,8 @@ const postsReducer = (state = defaultPostsState, action) => {
 				showModal: false
 			}
 		}
+		default: return state;
 	}
-	return state;
 };
 
 export default combineReducers({
