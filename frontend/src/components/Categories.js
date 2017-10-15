@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
 	fetchCategories,
 	getPostsForCategoryAsync,
@@ -38,6 +39,12 @@ class Categories extends Component {
 			</Panel>
 		);
 	}
+}
+
+Categories.propTypes = {
+	fetchCategories: PropTypes.func.isRequired,
+	getPostsForCategoryAsync: PropTypes.func.isRequired,
+	fetchPosts: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
