@@ -1,10 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Jumbotron } from 'react-bootstrap';
-
-const propTypes = {
-
-}
 
 function NotFound(props) {
     return (
@@ -14,7 +9,5 @@ function NotFound(props) {
         </Jumbotron>
     )
 }
-
-NotFound.propTypes = propTypes
 
 export default NotFound
