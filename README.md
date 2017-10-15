@@ -9,6 +9,7 @@ This is the second project of the Udacity React nanodegree. It consists of 2 par
   The interface is built using React JS (https://reactjs.org/),with state management done with Redux (http://redux.js.org/).
   Layout of the web application has been made with react-bootstrap components (https://react-bootstrap.github.io/),
   with module react-overlays updated to 0.7.3,due to issue with react-bootstrap modal dialogs in React v.16.
+  Async calls in redux are done using the redux-thunk middleware (https://github.com/gaearon/redux-thunk)
   The frontend part of the project can be accessed at URL : http://localhost:3000
 
 ## Starting the project 
