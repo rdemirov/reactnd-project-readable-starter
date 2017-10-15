@@ -24,7 +24,7 @@ class Comments extends Component {
 
     render() {
         let comments = this.props.comments || [];
-        let { showModal, closeCommentsDialog,addCommentAsync } = this.props;
+        let { showModal, closeCommentsDialog,addCommentAsync,commentEditFlag,commentToEdit } = this.props;
         return (
             <Panel
                 style={{ width: '95%' }}
@@ -39,6 +39,8 @@ class Comments extends Component {
                     handleSubmit={addCommentAsync}
                     addComment={addCommentAsync}
                     parentId={this.props.parentId}
+                    editFlag={commentEditFlag}
+                   commentToEdit={commentToEdit}
                 />
             </Panel>
         )

@@ -50,7 +50,7 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts, closeDialog, showModal, categories ,addPostAsync} = this.props;
+		let { posts, closeDialog, showModal, categories ,addPostAsync,postEditFlag,postToEdit} = this.props;
 		return (
 			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				{posts.map((post) => (
@@ -85,6 +85,9 @@ class Posts extends Component {
 					closeDialog={closeDialog}
 					categories={categories}
 					addPost={addPostAsync}
+					editFlag={postEditFlag}
+					postToEdit={postToEdit}
+
 				/>
 			</Panel>
 		);
