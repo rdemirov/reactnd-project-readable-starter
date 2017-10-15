@@ -28,14 +28,16 @@ react-bootstrap components for the layout. It includes the following files:
   |-- CreateUpdatePostDialog.js - Add/edit posts dialog
   |-- Header.js - Page Header components.Contains buttons for sorting of posts by vote and date
   |-- NotFound.js - 404 page of the app
-  |-- PostDetail.js - posts detail view component.Contains the author and body of a post and is rendered inside the post's panel 
+  |-- PostDetail.js - posts detail view component.Contains the author and body of a post and is rendered 
+  inside the post's panel 
   |-- Posts.js - Main component for viewing the posts.Contains a panel with nested collapsible panels for the posts.
   The button for new posts addition is on the panel's header.
   At the posts panels' footer are the buttons for post edit,deletion and voting.
 |-- .gitignore 
 |-- README.MD - This README file.
 |-- package.json - npm package manager file.
-|-- package-lock.json - npm package manager file.Contains description of the dependencies of the modules used in the project.
+|-- package-lock.json - npm package manager file.Contains description of the dependencies of the modules 
+used in the project.
 ```
 
 ## Readable frontend app functional description
