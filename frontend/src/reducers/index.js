@@ -4,15 +4,15 @@ import actionTypes from '../actions/actionTypes';
 const defaultPostsState = {
 	postsArray: [],
 	showModal: false,
-	editPostFlag:false,
-	postToEdit:{}
+	editPostFlag: false,
+	postToEdit: {}
 };
 const defaultCommentsState = {
 	commentsArray: [],
 	showModal: false,
-	selectedPostId:'',
-	editCommentFlag:false,
-	commentToEdit:{}
+	selectedPostId: '',
+	editCommentFlag: false,
+	commentToEdit: {}
 };
 const defaultCategoriesState = [];
 
@@ -45,8 +45,9 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 		case actionTypes.OPEN_COMMENTS_DIALOG: {
 			return {
 				...state,
+				...action.params,
 				showModal: true,
-				selectedPostId:action.params.postId
+				selectedPostId: action.params.postId
 			}
 
 		}
@@ -60,10 +61,10 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 			return {
 				...state,
 				commentsArray: [...state.commentsArray, action.comment],
-				showModal:false
+				showModal: false
 			}
 		}
-		
+
 	}
 
 	return state;
@@ -120,6 +121,7 @@ const postsReducer = (state = defaultPostsState, action) => {
 		case actionTypes.OPEN_DIALOG: {
 			return {
 				...state,
+				...action.params,
 				showModal: true
 			}
 		}

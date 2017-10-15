@@ -15,7 +15,7 @@ import {
 class CreateUpdatePostDialog extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.defaultState = {
             formData: {
                 author: 'anonymous',
                 body: '',
@@ -27,8 +27,22 @@ class CreateUpdatePostDialog extends Component {
                 body: null
             }
         };
+        this.state = this.defaultState;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        let { postToEdit, editFlag } = this.props;
+        if (editFlag) {
+            this.setState((state) => ({
+                ...state,
+                formData: {
+                    ...state.formData,
+                    ...postToEdit
+                }
+            }))
+        }
     }
 
     handleChange(event) {

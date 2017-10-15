@@ -62,8 +62,21 @@ class CreateUpdatePostDialog extends Component {
         else this.props.addComment({...formData,parentId:this.props.parentId});
     }
 
+    componentDidMount() {
+        let { commentToEdit, editFlag } = this.props;
+        if (editFlag) {
+            this.setState((state) => ({
+                ...state,
+                formData: {
+                    ...state.formData,
+                    ...commentToEdit
+                }
+            }))
+        }
+    }
+
     render() {
-        let { showDialog, closeDialog } = this.props;
+        let { showDialog, closeDialog,editFlag } = this.props;
         let { author, body } = this.state.formData;
         return (
             <Modal show={showDialog} bsSize="large" onHide={closeDialog}>
@@ -81,6 +94,7 @@ class CreateUpdatePostDialog extends Component {
                             <Col xs={10}>
                                 <FormControl
                                     type='text'
+                                    disabled={editFlag}
                                     placeholder='Enter comment author'
                                     value={author}
                                     onChange={this.handleChange}

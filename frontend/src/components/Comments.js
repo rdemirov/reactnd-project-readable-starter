@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CommentDetails from './CommentDetails';
-import { getCommentsForPostAsync, openCommentsDialog, closeCommentsDialog,addCommentAsync } from '../actions'
+import { getCommentsForPostAsync, openCommentsDialog, closeCommentsDialog, addCommentAsync } from '../actions'
 import CreateUpdateCommentDialog from './CreateUpdateCommentDialog';
 
 import { Panel, Grid, Row, Col, Button, Badge } from 'react-bootstrap';
@@ -11,11 +11,11 @@ import { Panel, Grid, Row, Col, Button, Badge } from 'react-bootstrap';
 class Comments extends Component {
     constructor(props) {
         super(props)
-        this.handleOpenDialog=this.handleOpenDialog.bind(this);
+        this.handleOpenDialog = this.handleOpenDialog.bind(this);
     }
 
-    handleOpenDialog () {
-        this.props.openCommentsDialog({postId:this.props.postId})
+    handleOpenDialog() {
+        this.props.openCommentsDialog({ postId: this.props.postId, editCommentFlag: false, commentToEdit: {} })
     }
 
     componentDidMount() {
@@ -24,7 +24,7 @@ class Comments extends Component {
 
     render() {
         let comments = this.props.comments || [];
-        let { showModal, closeCommentsDialog,addCommentAsync,commentEditFlag,commentToEdit } = this.props;
+        let { showModal, closeCommentsDialog, addCommentAsync, editCommentFlag, commentToEdit } = this.props;
         return (
             <Panel
                 style={{ width: '95%' }}
@@ -33,15 +33,15 @@ class Comments extends Component {
                 {
                     comments.map((comment) => (<CommentDetails key={comment.id} comment={comment} />))
                 }
-                <CreateUpdateCommentDialog
+                {showModal && <CreateUpdateCommentDialog
                     showDialog={showModal}
                     closeDialog={closeCommentsDialog}
                     handleSubmit={addCommentAsync}
                     addComment={addCommentAsync}
                     parentId={this.props.parentId}
-                    editFlag={commentEditFlag}
-                   commentToEdit={commentToEdit}
-                />
+                    editFlag={editCommentFlag}
+                    commentToEdit={commentToEdit}
+                />}
             </Panel>
         )
     }
@@ -54,14 +54,14 @@ Comments.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
     comments: state.comments.commentsArray.filter((element) => ((element.parentId === ownProps.postId))),
     showModal: state.comments.showModal,
-    parentId:state.comments.selectedPostId,
-    editCommentFlag:state.comments.editCommentFlag,
-    commentToEdit:state.comments.commentToEdit,
+    parentId: state.comments.selectedPostId,
+    editCommentFlag: state.comments.editCommentFlag,
+    commentToEdit: state.comments.commentToEdit,
     ...ownProps
 })
 
 const mapDispatchToProps = {
-    getCommentsForPostAsync, openCommentsDialog, closeCommentsDialog,addCommentAsync
+    getCommentsForPostAsync, openCommentsDialog, closeCommentsDialog, addCommentAsync
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync, voteForPostAsync, openDialog, closeDialog,addPostAsync } from '../actions';
+import { fetchPosts, removePostAsync, voteForPostAsync, openDialog, closeDialog, addPostAsync } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import moment from 'moment';
@@ -27,6 +27,7 @@ class Posts extends Component {
 		this.handleUpVote = this.handleUpVote.bind(this);
 		this.handleDownVote = this.handleDownVote.bind(this);
 		this.openDialog = this.openDialog.bind(this);
+		this.openEditDialog = this.openEditDialog.bind(this);
 	}
 
 	componentDidMount() {
@@ -38,8 +39,14 @@ class Posts extends Component {
 	}
 
 	openDialog() {
-		this.props.openDialog();
+		this.props.openDialog({ editPostFlag: false, postToEdit: {} });
 	}
+
+	openEditDialog(post) {
+		let { author, category, title, body } = post;
+		this.props.openDialog({ postToEdit: { author, category, title, body }, editPostFlag: true });
+	}
+
 
 	handleUpVote(postId) {
 		this.props.voteForPost({ postId, option: 'upVote' });
@@ -50,7 +57,7 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts, closeDialog, showModal, categories ,addPostAsync,postEditFlag,postToEdit} = this.props;
+		let { posts, closeDialog, showModal, categories, addPostAsync, postEditFlag, postToEdit } = this.props;
 		return (
 			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				{posts.map((post) => (
@@ -66,7 +73,7 @@ class Posts extends Component {
 						footer={
 							<ButtonToolbar>
 								<ButtonGroup>
-									<Button onClick={this.openDialog}><Glyphicon glyph="pencil" /></Button>
+									<Button onClick={() => (this.openEditDialog(post))}><Glyphicon glyph="pencil" /></Button>
 									<Button onClick={() => (this.handleDelete(post.id))}>
 										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
 									<Button onClick={() => (this.handleUpVote(post.id))}>
@@ -98,9 +105,9 @@ const mapStateToProps = (state) => ({
 	posts: state.posts.postsArray,
 	showModal: state.posts.showModal,
 	categories: state.categories,
-	postEditFlag:state.posts.editPostFlag,
-	postToEdit:state.posts.postToEdit
+	postEditFlag: state.posts.editPostFlag,
+	postToEdit: state.posts.postToEdit
 });
 
 
-export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync, openDialog, closeDialog,addPostAsync })(Posts);
+export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync, openDialog, closeDialog, addPostAsync })(Posts);

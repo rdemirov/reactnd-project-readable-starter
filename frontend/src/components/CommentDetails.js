@@ -11,7 +11,7 @@ class CommentDetails extends Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleUpVote = this.handleUpVote.bind(this);
         this.handleDownVote = this.handleDownVote.bind(this);
-        this.openDialog = this.openDialog.bind(this)
+        this.openEditDialog = this.openEditDialog.bind(this);
     }
 
     handleDelete(commentId) {
@@ -26,12 +26,13 @@ class CommentDetails extends Component {
         this.props.voteForCommentAsync({ commentId, option: 'downVote' });
     }
 
-    openDialog() {
-        this.props.openCommentsDialog();
-    }
+    openEditDialog(comment) {
+		let { body } = comment;
+		this.props.openCommentsDialog({ commentToEdit: {body }, editCommentFlag: true });
+	}
 
     render() {
-        let { comment,openCommentsDialog } = this.props;
+        let { comment } = this.props;
         return (
             <Well >
                 <Grid>
@@ -48,7 +49,7 @@ class CommentDetails extends Component {
                     <Row>
                         <ButtonToolbar>
                             <ButtonGroup>
-                                <Button onClick={this.openDialog}>
+                                <Button onClick={()=>(this.openEditDialog(comment))}>
                                     <Glyphicon glyph="pencil" /></Button>
                                 <Button onClick={() => (this.handleDelete(comment.id))}>
                                     <Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
