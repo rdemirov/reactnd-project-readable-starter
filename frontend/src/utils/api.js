@@ -74,12 +74,11 @@ export default {
 
 	voteForPost: (params) => {
 		let { postId, option } = params;
-		console.log(params);
 		return fetch(`${url}:${port}/posts/${postId}`,
 			{
 				headers,
 				method: 'POST',
-				body: JSON.stringify({ option:params.option })
+				body: JSON.stringify({ option:option })
 			})
 			.then(res => res.json())
 			.then(post => post);
@@ -91,7 +90,7 @@ export default {
 		{
 			headers,
 			method: 'POST',
-			body: JSON.stringify({ option:params.option })
+			body: JSON.stringify({ option:option })
 		})
 			.then(res => res.json())
 			.then(comment => comment);
