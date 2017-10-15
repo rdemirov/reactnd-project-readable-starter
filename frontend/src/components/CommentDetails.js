@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon, Badge } from 'react-bootstrap';
-import { deleteCommentAsync, voteForCommentAsync } from '../actions'
+import { deleteCommentAsync, voteForCommentAsync,openCommentsDialog } from '../actions'
 import { connect } from 'react-redux'
 class CommentDetails extends Component {
 
@@ -11,6 +11,7 @@ class CommentDetails extends Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleUpVote = this.handleUpVote.bind(this);
         this.handleDownVote = this.handleDownVote.bind(this);
+        this.openDialog = this.openDialog.bind(this)
     }
 
     handleDelete(commentId) {
@@ -23,6 +24,10 @@ class CommentDetails extends Component {
 
     handleDownVote(commentId) {
         this.props.voteForCommentAsync({ commentId, option: 'downVote' });
+    }
+
+    openDialog() {
+        this.props.openCommentsDialog();
     }
 
     render() {
@@ -43,7 +48,7 @@ class CommentDetails extends Component {
                     <Row>
                         <ButtonToolbar>
                             <ButtonGroup>
-                                <Button>
+                                <Button onClick={this.openDialog}>
                                     <Glyphicon glyph="pencil" /></Button>
                                 <Button onClick={() => (this.handleDelete(comment.id))}>
                                     <Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
@@ -66,7 +71,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = {
-    deleteCommentAsync, voteForCommentAsync
+    deleteCommentAsync, voteForCommentAsync,openCommentsDialog
 }
 
 

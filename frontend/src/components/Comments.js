@@ -27,7 +27,7 @@ class Comments extends Component {
                 header={<span><label>Comments <Badge>{comments.length}</Badge></label>
                     <Button style={{ float: 'right' }} onClick={this.props.openCommentsDialog}>Add comment</Button></span>}>
                 {
-                    comments.map((comment) => (<CommentDetails comment={comment} />))
+                    comments.map((comment) => (<CommentDetails key={comment.id} comment={comment} />))
                 }
                 <CreateUpdateCommentDialog
                     showDialog={showModal}

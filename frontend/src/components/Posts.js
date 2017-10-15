@@ -66,7 +66,7 @@ class Posts extends Component {
 						footer={
 							<ButtonToolbar>
 								<ButtonGroup>
-									<Button><Glyphicon glyph="pencil" /></Button>
+									<Button  onClick={this.openDialog}><Glyphicon glyph="pencil" /></Button>
 									<Button onClick={() => (this.handleDelete(post.id))}>
 										<Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
 									<Button onClick={() => (this.handleUpVote(post.id))}>
