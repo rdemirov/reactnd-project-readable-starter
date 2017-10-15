@@ -27,8 +27,8 @@ class CommentDetails extends Component {
     }
 
     openEditDialog(comment) {
-		let { body } = comment;
-		this.props.openCommentsDialog({ commentToEdit: {body }, editCommentFlag: true });
+		let { body,id } = comment;
+		this.props.openCommentsDialog({ commentToEdit: {body,id }, editCommentFlag: true });
 	}
 
     render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CommentDetails from './CommentDetails';
-import { getCommentsForPostAsync, openCommentsDialog, closeCommentsDialog, addCommentAsync } from '../actions'
+import { getCommentsForPostAsync, openCommentsDialog, editCommentAsync, closeCommentsDialog, addCommentAsync } from '../actions'
 import CreateUpdateCommentDialog from './CreateUpdateCommentDialog';
 
 import { Panel, Grid, Row, Col, Button, Badge } from 'react-bootstrap';
@@ -24,7 +24,7 @@ class Comments extends Component {
 
     render() {
         let comments = this.props.comments || [];
-        let { showModal, closeCommentsDialog, addCommentAsync, editCommentFlag, commentToEdit } = this.props;
+        let { showModal, closeCommentsDialog, editCommentAsync, addCommentAsync, editCommentFlag, commentToEdit } = this.props;
         return (
             <Panel
                 style={{ width: '95%' }}
@@ -38,6 +38,7 @@ class Comments extends Component {
                     closeDialog={closeCommentsDialog}
                     handleSubmit={addCommentAsync}
                     addComment={addCommentAsync}
+                    editComment={editCommentAsync}
                     parentId={this.props.parentId}
                     editFlag={editCommentFlag}
                     commentToEdit={commentToEdit}
@@ -61,7 +62,11 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = {
-    getCommentsForPostAsync, openCommentsDialog, closeCommentsDialog, addCommentAsync
+    getCommentsForPostAsync,
+    editCommentAsync,
+    openCommentsDialog,
+    closeCommentsDialog,
+    addCommentAsync
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments)

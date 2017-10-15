@@ -68,7 +68,10 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 		case actionTypes.EDIT_COMMENT_DETAILS: {
 			return {
 				...state,
-				commentsArray: [...state.commentsArray, action.comment],
+				commentsArray: state.commentsArray.map((element) => {
+					if (element.id === action.comment.id) return action.comment;
+					else return element;
+				}),
 				showModal: false
 			}
 		}
@@ -148,9 +151,13 @@ const postsReducer = (state = defaultPostsState, action) => {
 			}
 		}
 		case actionTypes.EDIT_POST: {
+			let postsArray = state.postsArray.map((post) => {
+				if (post.id === action.post.id) return action.post;
+				else return post;
+			})
 			return {
 				...state,
-				postsArray: [...state.postsArray, action.post],
+				postsArray,
 				showModal: false
 			}
 		}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync, voteForPostAsync, openDialog, closeDialog, addPostAsync } from '../actions';
+import { fetchPosts, removePostAsync, voteForPostAsync, editPostAsync, openDialog, closeDialog, addPostAsync } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import moment from 'moment';
@@ -43,8 +43,8 @@ class Posts extends Component {
 	}
 
 	openEditDialog(post) {
-		let { author, category, title, body } = post;
-		this.props.openDialog({ postToEdit: { author, category, title, body }, editPostFlag: true });
+		let { author, category, title, body,id } = post;
+		this.props.openDialog({ postToEdit: { author, category, title, body,id }, editPostFlag: true });
 	}
 
 
@@ -57,7 +57,7 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts, closeDialog, showModal, categories, addPostAsync, postEditFlag, postToEdit } = this.props;
+		let { posts, editPostAsync,closeDialog, showModal, categories, addPostAsync, postEditFlag, postToEdit } = this.props;
 		return (
 			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				{posts.map((post) => (
@@ -92,6 +92,7 @@ class Posts extends Component {
 					closeDialog={closeDialog}
 					categories={categories}
 					addPost={addPostAsync}
+                    editPost={editPostAsync}
 					editFlag={postEditFlag}
 					postToEdit={postToEdit}
 
@@ -110,4 +111,12 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync, openDialog, closeDialog, addPostAsync })(Posts);
+export default connect(mapStateToProps, {
+	fetchPosts,
+	deletePost: removePostAsync,
+	voteForPost: voteForPostAsync,
+	openDialog,
+	closeDialog,
+	addPostAsync,
+	editPostAsync
+})(Posts);

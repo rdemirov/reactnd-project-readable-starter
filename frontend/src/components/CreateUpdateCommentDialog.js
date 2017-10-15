@@ -59,7 +59,10 @@ class CreateUpdatePostDialog extends Component {
             ...this.state,
             validations
         })
-        else this.props.addComment({...formData,parentId:this.props.parentId});
+        else {
+            if (this.props.editFlag) this.props.editComment({ ...formData, commentId: this.props.commentToEdit.id });
+            else this.props.addComment({ ...formData, parentId: this.props.parentId });
+        }
     }
 
     componentDidMount() {
@@ -76,7 +79,7 @@ class CreateUpdatePostDialog extends Component {
     }
 
     render() {
-        let { showDialog, closeDialog,editFlag } = this.props;
+        let { showDialog, closeDialog, editFlag } = this.props;
         let { author, body } = this.state.formData;
         return (
             <Modal show={showDialog} bsSize="large" onHide={closeDialog}>

@@ -75,7 +75,10 @@ class CreateUpdatePostDialog extends Component {
             ...this.state,
             validations
         })
-        else this.props.addPost(formData);
+        else {
+            if (this.props.editFlag) this.props.editPost({ ...formData, postId: this.props.postToEdit.id });
+            else this.props.addPost(formData);
+        }
     }
 
     render() {
