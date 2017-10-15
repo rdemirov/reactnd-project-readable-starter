@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync, voteForPostAsync, openDialog, closeDialog } from '../actions';
+import { fetchPosts, removePostAsync, voteForPostAsync, openDialog, closeDialog,addPostAsync } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import moment from 'moment';
@@ -50,7 +50,7 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts, closeDialog, showModal, categories } = this.props;
+		let { posts, closeDialog, showModal, categories ,addPostAsync} = this.props;
 		return (
 			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				{posts.map((post) => (
@@ -84,6 +84,7 @@ class Posts extends Component {
 					showDialog={showModal}
 					closeDialog={closeDialog}
 					categories={categories}
+					addPost={addPostAsync}
 				/>
 			</Panel>
 		);
@@ -97,4 +98,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync, openDialog, closeDialog })(Posts);
+export default connect(mapStateToProps, { fetchPosts, deletePost: removePostAsync, voteForPost: voteForPostAsync, openDialog, closeDialog,addPostAsync })(Posts);

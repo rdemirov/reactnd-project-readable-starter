@@ -101,7 +101,7 @@ export default {
 		params.id = uuid.v1();
 		params.timestamp = Date.now();
 		return fetch(`${url}:${port}/posts/`,
-			{ headers, method: 'POST', body: params })
+			{ headers, method: 'POST', body: JSON.stringify(params) })
 			.then(res => res.json())
 			.then(post => post);
 	},
@@ -110,7 +110,7 @@ export default {
 		params.id = uuid.v1();
 		params.timestamp = Date.now();
 		return fetch(`${url}:${port}/comments`,
-			{ headers, method: 'POST', body: params })
+			{ headers, method: 'POST', body:JSON.stringify(params) })
 			.then(res => res.json())
 			.then(comment => comment);
 	}

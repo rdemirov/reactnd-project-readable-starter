@@ -16,7 +16,7 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 		case actionTypes.GET_COMMENTS_FOR_POST: {
 			return {
 				...state,
-				commentsArray: [...state.commentsArray,...action.comments]
+				commentsArray: [...state.commentsArray, ...action.comments]
 			}
 		}
 		case actionTypes.DELETE_COMMENT: {
@@ -48,6 +48,12 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 			return {
 				...state,
 				showModal: false
+			}
+		}
+		case actionTypes.ADD_COMMENT: {
+			return {
+				...state,
+				commentsArray: [...state.commentsArray, action.comment]
 			}
 		}
 	}
@@ -112,6 +118,14 @@ const postsReducer = (state = defaultPostsState, action) => {
 		case actionTypes.CLOSE_DIALOG: {
 			return {
 				...state,
+				showModal: false
+			}
+		}
+
+		case actionTypes.ADD_POST: {
+			return {
+				...state,
+				postsArray: [...state.postsArray, action.post],
 				showModal: false
 			}
 		}
