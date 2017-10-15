@@ -46,7 +46,7 @@ export default {
 	editPostDetails: (params) => {
 		let { postId, title, body } = params;
 		return fetch(`${url}:${port}/posts/${postId}`,
-			{ headers, method: 'PUT', body: { title, body } })
+			{ headers, method: 'PUT', body: JSON.stringify({ title, body }) })
 			.then(res => res.json())
 			.then(post => post);
 	},
@@ -55,7 +55,7 @@ export default {
 		let { commentId, body } = params;
 		let timestamp = Date.now();
 		return fetch(`${url}:${port}/comments/${commentId}`,
-			{ headers, method: 'PUT', body: { timestamp, body } })
+			{ headers, method: 'PUT', body: JSON.stringify({ timestamp, body }) })
 			.then(res => res.json())
 			.then(comment => comment);
 	},
