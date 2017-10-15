@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {sortPosts} from '../actions';
+import PropTypes from 'prop-types';
+import { sortPosts } from '../actions';
 import {
 	PageHeader,
 	ButtonToolbar,
@@ -10,29 +11,29 @@ import {
 
 class Header extends Component {
 	render() {
-		let {sortPosts} = this.props;
+		let { sortPosts } = this.props;
 		return (
 			<PageHeader>
 				<div>
 					<p>
-				Readable
+						Readable
 					</p>
 				</div>
 				<ButtonToolbar>
 					<ButtonGroup bsSize="large">
-						<Button onClick={()=>(sortPosts({sortBy:'dateDesc'}))}>Newest </Button>
-						<Button onClick={()=>(sortPosts({sortBy:'dateAsc'}))}>Oldest</Button>
-						<Button onClick={()=>(sortPosts({sortBy:'votesDesc'}))}>Most voted</Button>
-						<Button onClick={()=>(sortPosts({sortBy:'votesAsc'}))}>Least voted</Button>
+						<Button onClick={() => (sortPosts({ sortBy: 'dateDesc' }))}>Newest </Button>
+						<Button onClick={() => (sortPosts({ sortBy: 'dateAsc' }))}>Oldest</Button>
+						<Button onClick={() => (sortPosts({ sortBy: 'votesDesc' }))}>Most voted</Button>
+						<Button onClick={() => (sortPosts({ sortBy: 'votesAsc' }))}>Least voted</Button>
 					</ButtonGroup></ButtonToolbar>
 			</PageHeader>
 		);
 	}
 }
 
-const mapStateToProps = () => ({
+Header.propTypes = {
+	sortPosts: PropTypes.func.isRequired
+}
 
-});
-
-
-export default connect(mapStateToProps, {sortPosts})(Header);
+const mapStateToProps = () => ({});
+export default connect(mapStateToProps, { sortPosts })(Header);
