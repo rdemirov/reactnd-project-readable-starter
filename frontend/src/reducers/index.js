@@ -20,7 +20,7 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 			}
 		}
 		case actionTypes.DELETE_COMMENT: {
-			let comments = state.filter((comment) => (comment.id !== action.comment.id));
+			let comments = state.commentsArray.filter((comment) => (comment.id !== action.comment.id));
 			return {
 				...state,
 				commentsArray: [comments]
