@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
 	fetchPosts,
 	removePostAsync,
@@ -112,6 +113,21 @@ class Posts extends Component {
 			</Panel>
 		);
 	}
+}
+
+Posts.propTypes = {
+	posts: PropTypes.array.isRequired,
+	showModal: PropTypes.bool,
+	categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+	postEditFlag: PropTypes.bool,
+	postToEdit: PropTypes.object,
+	fetchPosts: PropTypes.func.isRequired,
+	deletePost: PropTypes.func.isRequired,
+	voteForPost: PropTypes.func.isRequired,
+	openDialog: PropTypes.func.isRequired,
+	closeDialog: PropTypes.func.isRequired,
+	addPostAsync: PropTypes.func.isRequired,
+	editPostAsync: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({

@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import CommentDetails from './CommentDetails';
-import { getCommentsForPostAsync, openCommentsDialog, editCommentAsync, closeCommentsDialog, addCommentAsync } from '../actions'
+import {
+    getCommentsForPostAsync,
+    openCommentsDialog,
+    editCommentAsync,
+    closeCommentsDialog,
+    addCommentAsync
+} from '../actions';
 import CreateUpdateCommentDialog from './CreateUpdateCommentDialog';
 
-import { Panel,Button, Badge } from 'react-bootstrap';
+import { Panel, Button, Badge } from 'react-bootstrap';
 
 
 class Comments extends Component {
@@ -49,6 +55,17 @@ class Comments extends Component {
 }
 
 Comments.propTypes = {
+    comments: PropTypes.array,
+    showModal: PropTypes.bool,
+    parentId: PropTypes.string,
+    editCommentFlag: PropTypes.bool,
+    commentToEdit: PropTypes.object,
+    postId: PropTypes.string.isRequired,
+    getCommentsForPostAsync: PropTypes.func.isRequired,
+    editCommentAsync: PropTypes.func.isRequired,
+    openCommentsDialog: PropTypes.func.isRequired,
+    closeCommentsDialog: PropTypes.func,
+    addCommentAsync: PropTypes.func.isRequired
 
 }
 

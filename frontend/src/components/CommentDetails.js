@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import moment from 'moment'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 import {
     Well,
     Grid,
@@ -83,6 +83,13 @@ class CommentDetails extends Component {
             </Well>
         )
     }
+}
+
+CommentDetails.propTypes = {
+    comment: PropTypes.object.isRequired,
+    deleteCommentAsync: PropTypes.func.isRequired,
+    voteForCommentAsync: PropTypes.func.isRequired,
+    openCommentsDialog: PropTypes.func.isRequired
 }
 
 
