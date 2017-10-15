@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import Categories from './Categories';
 import Header from './Header';
 import Posts from './Posts';
-import { connect } from 'react-redux';
 import {
 	Grid,
 	Row,
-	Col,
 	Panel
 } from 'react-bootstrap';
 
