@@ -78,7 +78,7 @@ export default {
 			{
 				headers,
 				method: 'POST',
-				body: JSON.stringify({ option:option })
+				body: JSON.stringify({ option: option })
 			})
 			.then(res => res.json())
 			.then(post => post);
@@ -87,11 +87,11 @@ export default {
 	voteForComment: (params) => {
 		let { commentId, option } = params;
 		return fetch(`${url}:${port}/comments/${commentId}`,
-		{
-			headers,
-			method: 'POST',
-			body: JSON.stringify({ option:option })
-		})
+			{
+				headers,
+				method: 'POST',
+				body: JSON.stringify({ option: option })
+			})
 			.then(res => res.json())
 			.then(comment => comment);
 	},
@@ -109,7 +109,7 @@ export default {
 		params.id = uuid.v1();
 		params.timestamp = Date.now();
 		return fetch(`${url}:${port}/comments`,
-			{ headers, method: 'POST', body:JSON.stringify(params) })
+			{ headers, method: 'POST', body: JSON.stringify(params) })
 			.then(res => res.json())
 			.then(comment => comment);
 	}
