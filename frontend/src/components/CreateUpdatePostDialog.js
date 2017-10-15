@@ -65,7 +65,7 @@ class CreateUpdatePostDialog extends Component {
     }
 
     render() {
-        let { showDialog, closeDialog, categories } = this.props;
+        let { showDialog, closeDialog, categories, editFlag } = this.props;
         let { author, title, category, body } = this.state.formData;
         return (
             <Modal show={showDialog} bsSize="large" onHide={closeDialog}>
@@ -89,6 +89,7 @@ class CreateUpdatePostDialog extends Component {
                                         placeholder='Enter post author'
                                         value={author}
                                         onChange={this.handleChange}
+                                        disabled={editFlag}
                                     />
                                 </FormGroup>
                             </Col>
@@ -100,6 +101,7 @@ class CreateUpdatePostDialog extends Component {
                                 <FormControl
                                     id='category'
                                     componentClass='select'
+                                    disabled={editFlag}
                                     onChange={this.handleChange}
                                     value={category || categories[0]}>
                                     {categories.map((element) => (<option key={element.path} value={element.path}>{element.name}</option>))}

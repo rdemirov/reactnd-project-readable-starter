@@ -80,7 +80,7 @@ class Posts extends Component {
 						<PostDetail key={post.id} post={post} />
 					</Panel>
 				))}
-				<CreateUpdatePostDialog
+				{showModal && <CreateUpdatePostDialog
 					showDialog={showModal}
 					closeDialog={closeDialog}
 					categories={categories}
@@ -88,7 +88,7 @@ class Posts extends Component {
 					editFlag={postEditFlag}
 					postToEdit={postToEdit}
 
-				/>
+				/>}
 			</Panel>
 		);
 	}
