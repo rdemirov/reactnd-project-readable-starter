@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, removePostAsync, voteForPostAsync, editPostAsync, openDialog, closeDialog, addPostAsync } from '../actions';
+import {
+	fetchPosts,
+	removePostAsync,
+	voteForPostAsync,
+	editPostAsync,
+	openDialog,
+	closeDialog,
+	addPostAsync
+} from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import moment from 'moment';
 import {
 	Panel,
-	Grid,
 	Row,
 	Col,
 	Button,
 	ButtonToolbar,
 	ButtonGroup,
-	Label,
 	Glyphicon,
-	Modal,
 	Badge
 
 } from 'react-bootstrap';
@@ -43,8 +48,8 @@ class Posts extends Component {
 	}
 
 	openEditDialog(post) {
-		let { author, category, title, body,id } = post;
-		this.props.openDialog({ postToEdit: { author, category, title, body,id }, editPostFlag: true });
+		let { author, category, title, body, id } = post;
+		this.props.openDialog({ postToEdit: { author, category, title, body, id }, editPostFlag: true });
 	}
 
 
@@ -57,7 +62,14 @@ class Posts extends Component {
 	}
 
 	render() {
-		let { posts, editPostAsync,closeDialog, showModal, categories, addPostAsync, postEditFlag, postToEdit } = this.props;
+		let { posts,
+			editPostAsync,
+			closeDialog,
+			showModal,
+			categories,
+			addPostAsync,
+			postEditFlag,
+			postToEdit } = this.props;
 		return (
 			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				{posts.map((post) => (
@@ -92,7 +104,7 @@ class Posts extends Component {
 					closeDialog={closeDialog}
 					categories={categories}
 					addPost={addPostAsync}
-                    editPost={editPostAsync}
+					editPost={editPostAsync}
 					editFlag={postEditFlag}
 					postToEdit={postToEdit}
 
