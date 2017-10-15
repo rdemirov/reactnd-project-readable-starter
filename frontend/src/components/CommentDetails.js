@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon, Badge } from 'react-bootstrap';
-import { deleteCommentAsync, voteForCommentAsync,openCommentsDialog,closeCommentsDialog } from '../actions'
+import { deleteCommentAsync, voteForCommentAsync } from '../actions'
 import { connect } from 'react-redux'
 class CommentDetails extends Component {
 
@@ -43,7 +43,7 @@ class CommentDetails extends Component {
                     <Row>
                         <ButtonToolbar>
                             <ButtonGroup>
-                                <Button onClick={openCommentsDialog}>
+                                <Button>
                                     <Glyphicon glyph="pencil" /></Button>
                                 <Button onClick={() => (this.handleDelete(comment.id))}>
                                     <Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
@@ -66,8 +66,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = {
-    deleteCommentAsync, voteForCommentAsync,
-    openCommentsDialog,closeCommentsDialog
+    deleteCommentAsync, voteForCommentAsync
 }
 
 
