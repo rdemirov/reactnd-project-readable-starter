@@ -128,11 +128,10 @@ export const closeCommentsDialog = (params) => ({
 	type:  actionTypes.CLOSE_COMMENTS_DIALOG,
 	params
 });
-// EDIT_COMMENT_DETAILS: 'EDIT_COMMENT_DETAILS',
 
-const editPost = (comment) => ({
+const editPost = (post) => ({
 	type: actionTypes.EDIT_POST,
-	comment
+	post
 });
 
 export const editPostAsync = (params) => dispatch => (
@@ -141,7 +140,7 @@ export const editPostAsync = (params) => dispatch => (
 );
 
 const editComment = (comment) => ({
-	type: actionTypes.EDIT_POST,
+	type: actionTypes.EDIT_COMMENT_DETAILS,
 	comment
 });
 

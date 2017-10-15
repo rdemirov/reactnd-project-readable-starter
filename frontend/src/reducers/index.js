@@ -65,6 +65,14 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 			}
 		}
 
+		case actionTypes.EDIT_COMMENT_DETAILS: {
+			return {
+				...state,
+				commentsArray: [...state.commentsArray, action.comment],
+				showModal: false
+			}
+		}
+
 	}
 
 	return state;
@@ -133,6 +141,13 @@ const postsReducer = (state = defaultPostsState, action) => {
 		}
 
 		case actionTypes.ADD_POST: {
+			return {
+				...state,
+				postsArray: [...state.postsArray, action.post],
+				showModal: false
+			}
+		}
+		case actionTypes.EDIT_POST: {
 			return {
 				...state,
 				postsArray: [...state.postsArray, action.post],
