@@ -57,3 +57,90 @@ Using the four buttons found at the page header,you can sort the posts in the fo
 * OLDEST - by ascending order of date 
 * MOST VOTED - by descending voteScore
 * LEAST VOTED - by ascending voteScore
+
+### Posts panel 
+
+![postsPanel](./assets/images/postsPanel.PNG)
+
+The posts panel displays the existing posts and allows the addition,deletion,modification,upvoting and downvoting of posts.
+
+#### Addition of new posts 
+
+To add a new post,you should click the 'ADD POST' button on the posts panel.
+A dialog will open , allowing you to enter the details of the post:
+
+![addPostDialog](./assets/images/addPostDialog.PNG)
+
+The fields for body,title and author are required. In case one or more of them does not have a value,the addition cannot be confirmed:
+
+![addPostDialog](./assets/images/addPost_validation.PNG)
+
+To add the new post,press the CONFIRM button.The post will appear on the main screen of the app.
+
+#### Edition,deletion and voting for a post
+
+The button toolbar found at the footer of a given post's panel allows the user to edit a post,delete it, vote for or against it: 
+
+![postsToolbar](./assets/images/postsToolbar.PNG)
+
+The vote score of a post is displayed in the following way : 
+ - if the vote score is positive - inside a green badge,on the button for upvoting a post 
+ - if the vote score is negative - in a red badge,on the button for voting against a post.
+
+#### Edit post dialog
+
+The user can edit a comment by pressing the edit button (pencil icon) on the toolbar found in the post panel's footer.The add/edit post dialog opens:
+
+![editPostDialog](./assets/images/editPostDialog.PNG)
+
+The title and body fields are required.If any/all of them do not have a value on dialog confirmation, they will be highlighted in red: 
+
+![editPostValidation](./assets/images/editPostValidation.PNG)
+
+To update the post,the user should press the CONFIRM button
+
+#### Post details 
+
+Clicking the header of the panel for a given post displays the post details:
+
+![postsDetail](./assets/images/postsDetail.PNG)
+
+The details for a post contain the post's author body and comments(if present).The badge next to the 'Comments' label shows the comments count for a post.The button in the right of the row allows the user to add a new comment.
+
+#### Adding a new comment
+
+Pressing the button 'ADD COMMENT' opens a modal dialog for adding a new comment to a post : 
+
+![addCommentDialog](./assets/images/addCommentDialog.PNG)
+
+The fields for body and author are required,so the user will not be able to confirm the addition if any/all of them are empty : 
+
+![addCommentDialog_validation](./assets/images/addCommentDialog_validation.PNG)
+
+To add the comment,press the CONFIRM button.The comment will appear in the list of comments for the given post.
+
+### Comments panel 
+
+![commentsPanel](./assets/images/commentsPanel.PNG)
+
+#### Edition,deletion and voting for a comment
+
+The button toolbar below a comment's body allows the user to edit a comment,delete it, upvote or downvote it: 
+
+![postsToolbar](./assets/images/postsToolbar.PNG)
+
+The vote score of a comment is displayed in the following way : 
+ - if the vote score is positive - inside a green badge,on the button for upvoting a comment 
+ - if the vote score is negative - in a red badge,on the button for voting against a comment.
+
+#### Edit comment dialog
+
+The user can edit a comment by pressing the edit button (pencil icon) on the toolbar found below a comment's body.The add/edit comment dialog opens:
+
+![editCommentDialog](./assets/images/editCommentDialog.PNG)
+
+The body field is required.If it does not have a value on dialog confirmation , it is highlighted in red : 
+
+![editComment_validation](./assets/images/editComment_validation.PNG)
+
+To update the comment,the user should press the CONFIRM button
