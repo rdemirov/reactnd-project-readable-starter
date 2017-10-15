@@ -8,7 +8,7 @@ function PostDetail(props) {
     let {post} = props;
     return (
         <Grid>
-            <Row>
+            <Row style={{paddingBottom:'1.5em'}}>
                 <Col xs={1}>
                     <Label>Author :</Label>
                 </Col>
@@ -16,7 +16,7 @@ function PostDetail(props) {
                     {post.author}
                 </Col>
             </Row>
-            <Row>
+            <Row style={{paddingBottom:'1.5em'}}>
                 <Col>
                     {post.body}
                 </Col>

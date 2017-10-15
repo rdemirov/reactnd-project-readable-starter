@@ -91,7 +91,6 @@ class CreateUpdatePostDialog extends Component {
                 <Modal.Body>
                     <Form horizontal>
                         <FormGroup>
-
                             <Col xs={2}>
                                 <FormGroup validationState={this.state.validations.author}>
                                     <ControlLabel>Author </ControlLabel>
