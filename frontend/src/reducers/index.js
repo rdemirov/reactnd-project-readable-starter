@@ -3,12 +3,16 @@ import actionTypes from '../actions/actionTypes';
 
 const defaultPostsState = {
 	postsArray: [],
-	showModal: false
+	showModal: false,
+	editPostFlag:false,
+	postToEdit:{}
 };
 const defaultCommentsState = {
 	commentsArray: [],
 	showModal: false,
-	selectedPostId:''
+	selectedPostId:'',
+	editCommentFlag:false,
+	commentToEdit:{}
 };
 const defaultCategoriesState = [];
 

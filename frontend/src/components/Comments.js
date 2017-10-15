@@ -53,6 +53,8 @@ const mapStateToProps = (state, ownProps) => ({
     comments: state.comments.commentsArray.filter((element) => ((element.parentId === ownProps.postId))),
     showModal: state.comments.showModal,
     parentId:state.comments.selectedPostId,
+    editCommentFlag:state.comments.editCommentFlag,
+    commentToEdit:state.comments.commentToEdit,
     ...ownProps
 })
 

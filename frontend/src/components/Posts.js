@@ -94,7 +94,9 @@ class Posts extends Component {
 const mapStateToProps = (state) => ({
 	posts: state.posts.postsArray,
 	showModal: state.posts.showModal,
-	categories: state.categories
+	categories: state.categories,
+	postEditFlag:state.posts.editPostFlag,
+	postToEdit:state.posts.postToEdit
 });
 
 
