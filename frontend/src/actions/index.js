@@ -118,3 +118,13 @@ export const closeDialog = (params) => ({
 	type:  actionTypes.CLOSE_DIALOG,
 	params
 });
+
+export const openCommentsDialog = (params) => ({
+	type: actionTypes.OPEN_COMMENTS_DIALOG,
+	params
+});
+
+export const closeCommentsDialog = (params) => ({
+	type:  actionTypes.CLOSE_COMMENTS_DIALOG,
+	params
+});

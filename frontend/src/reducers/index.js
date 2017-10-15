@@ -3,34 +3,55 @@ import actionTypes from '../actions/actionTypes';
 
 const defaultPostsState = {
 	postsArray: [],
-	showModal:false
+	showModal: false
 };
-const defaultCommentsState = [];
+const defaultCommentsState = {
+	commentsArray: [],
+	showModal: false
+};
 const defaultCategoriesState = [];
 
 const commentsReducer = (state = defaultCommentsState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_COMMENTS_FOR_POST: {
-			return [
+			return {
 				...state,
-				...action.comments
-			]
+				commentsArray: [...state.commentsArray,...action.comments]
+			}
 		}
 		case actionTypes.DELETE_COMMENT: {
 			let comments = state.filter((comment) => (comment.id !== action.comment.id));
-			return [
-				...comments
-			]
+			return {
+				...state,
+				commentsArray: [comments]
+			}
 		}
 		case actionTypes.VOTE_FOR_COMMENT: {
-			return state.map((comment)=>{
-				if(comment.id===action.comment.id) return action.comment;
-				else return comment; 
-			})
+			return {
+				...state,
+				commentsArray: state.map((comment) => {
+					if (comment.id === action.comment.id) return action.comment;
+					else return comment;
+				})
+			}
 
 		}
+
+		case actionTypes.OPEN_COMMENTS_DIALOG: {
+			return {
+				...state,
+				showModal: true
+			}
+
+		}
+		case actionTypes.CLOSE_COMMENTS_DIALOG: {
+			return {
+				...state,
+				showModal: false
+			}
+		}
 	}
-	
+
 	return state;
 };
 
@@ -46,8 +67,10 @@ const categoriesReducer = (state = defaultCategoriesState, action) => {
 const postsReducer = (state = defaultPostsState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_ALL_POSTS: {
-			return {   ...state,
-				       postsArray: action.posts };
+			return {
+				...state,
+				postsArray: action.posts
+			};
 		}
 
 		case actionTypes.FILTER_POSTS_BY_CATEGORY: {
@@ -83,13 +106,13 @@ const postsReducer = (state = defaultPostsState, action) => {
 		case actionTypes.OPEN_DIALOG: {
 			return {
 				...state,
-				showModal:true
+				showModal: true
 			}
 		}
 		case actionTypes.CLOSE_DIALOG: {
 			return {
 				...state,
-				showModal:false
+				showModal: false
 			}
 		}
 	}
