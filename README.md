@@ -1,22 +1,57 @@
-# Readable API Server
+# Readable project 
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+This is the second project of the Udacity React nanodegree. It consists of 2 parts : 
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+* Backend server - provided as a starter template from Udacity. 
+  After it is started,it is accessible at the following URL : http://localhost:3001
 
-## Start Developing
+* Frontend - implemented using the create-react-app package (https://github.com/facebookincubator/create-react-app).
+  The interface is built using React JS (https://reactjs.org/),with state management done with Redux (http://redux.js.org/).
+  Layout of the web application has been made with react-bootstrap components (https://react-bootstrap.github.io/),
+  with module react-overlays updated to 0.7.3,due to issue with react-bootstrap modal dialogs in React v.16.
+  The frontend part of the project can be accessed at URL : http://localhost:3000
 
-To get started developing right away:
+## Starting the project 
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
-    - `npm start`
+Before starting the frontend,you should start the backend server.Installation of project modules is needed only for the initial execution of the project.
 
-## API Server
+### Starting the backend server 
 
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+First,you should enter the server's folder : 
+
+```
+cd api-server
+```
+Before starting the server for the first time,you should install its dependencies by:
+
+```
+npm install
+```
+After the install has finished, the backend part of the project is started with:
+
+```
+node server
+```
+### Starting the frontend
+
+Starting from the root folder of the project,change directory to the frontend folder:
+
+```
+cd frontend
+```
+Before the first execution of the frontend part, you should install its modules:
+
+```
+npm install 
+```
+After the install,the project is started by typing : 
+
+```
+npm start
+```
+
+## Additional information 
+
+For additional information about the server,please reference : [Server readme](./api-server/README.md)
+
+Additional info about the frontend part is found at : [Frontend readme](./frontend/README.md)
