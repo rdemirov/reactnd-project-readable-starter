@@ -5,7 +5,7 @@ import CommentDetails from './CommentDetails';
 import { getCommentsForPostAsync, openCommentsDialog, editCommentAsync, closeCommentsDialog, addCommentAsync } from '../actions'
 import CreateUpdateCommentDialog from './CreateUpdateCommentDialog';
 
-import { Panel, Grid, Row, Col, Button, Badge } from 'react-bootstrap';
+import { Panel,Button, Badge } from 'react-bootstrap';
 
 
 class Comments extends Component {

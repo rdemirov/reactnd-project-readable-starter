@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { Panel, Well, Grid, Row, Col, Button, ButtonGroup, ButtonToolbar, Glyphicon, Badge } from 'react-bootstrap';
-import { deleteCommentAsync, voteForCommentAsync,openCommentsDialog } from '../actions'
+import {
+    Well,
+    Grid,
+    Row,
+    Col,
+    Button,
+    ButtonGroup,
+    ButtonToolbar,
+    Glyphicon,
+    Badge
+} from 'react-bootstrap';
+
+import {
+    deleteCommentAsync,
+    voteForCommentAsync,
+    openCommentsDialog
+} from '../actions'
 import { connect } from 'react-redux'
 class CommentDetails extends Component {
 
@@ -27,9 +42,9 @@ class CommentDetails extends Component {
     }
 
     openEditDialog(comment) {
-		let { body,id } = comment;
-		this.props.openCommentsDialog({ commentToEdit: {body,id }, editCommentFlag: true });
-	}
+        let { body, id } = comment;
+        this.props.openCommentsDialog({ commentToEdit: { body, id }, editCommentFlag: true });
+    }
 
     render() {
         let { comment } = this.props;
@@ -38,7 +53,7 @@ class CommentDetails extends Component {
                 <Grid>
                     <Row>
                         <Col xs={10}>
-                       { moment(new Date(comment.timestamp)).format('YYYY-MM-DD')}
+                            {moment(new Date(comment.timestamp)).format('YYYY-MM-DD')}
                         </Col>
                     </Row>
                     <Row>
@@ -49,14 +64,18 @@ class CommentDetails extends Component {
                     <Row>
                         <ButtonToolbar>
                             <ButtonGroup>
-                                <Button onClick={()=>(this.openEditDialog(comment))}>
+                                <Button onClick={() => (this.openEditDialog(comment))}>
                                     <Glyphicon glyph="pencil" /></Button>
                                 <Button onClick={() => (this.handleDelete(comment.id))}>
                                     <Glyphicon style={{ color: 'red' }} glyph="remove" /> </Button>
                                 <Button onClick={() => (this.handleUpVote(comment.id))}>
-                                    <Glyphicon style={{ color: 'green' }} glyph="thumbs-up" />&nbsp;<Badge pullRight style={{ backgroundColor: 'green' }}>{comment.voteScore > 0 ? comment.voteScore : ''}</Badge></Button>
+                                    <Glyphicon style={{ color: 'green' }} glyph="thumbs-up" />
+                                    <Badge pullRight style={{ backgroundColor: 'green' }}>{comment.voteScore > 0 ? comment.voteScore : ''}</Badge>
+                                </Button>
                                 <Button onClick={() => (this.handleDownVote(comment.id))}>
-                                    <Glyphicon style={{ color: 'red' }} glyph="thumbs-down" />&nbsp;<Badge pullRight style={{ backgroundColor: 'red' }}>{comment.voteScore < 0 ? comment.voteScore : ''}</Badge></Button>
+                                    <Glyphicon style={{ color: 'red' }} glyph="thumbs-down" />
+                                    <Badge pullRight style={{ backgroundColor: 'red' }}>{comment.voteScore < 0 ? comment.voteScore : ''}</Badge>
+                                </Button>
                             </ButtonGroup>
                         </ButtonToolbar>
                     </Row>
@@ -72,7 +91,9 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = {
-    deleteCommentAsync, voteForCommentAsync,openCommentsDialog
+    deleteCommentAsync,
+    voteForCommentAsync,
+    openCommentsDialog
 }
 
 
