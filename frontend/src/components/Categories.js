@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCategories, getPostsForCategoryAsync, fetchPosts } from '../actions';
+import {
+	fetchCategories,
+	getPostsForCategoryAsync,
+	fetchPosts
+} from '../actions';
 import {
 	Panel,
 	Nav,

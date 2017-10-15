@@ -3,7 +3,6 @@ import Categories from './Categories';
 import Header from './Header';
 import Posts from './Posts';
 import { connect } from 'react-redux';
-import './App.css';
 import {
 	Grid,
 	Row,
