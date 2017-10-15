@@ -30,9 +30,9 @@ react-bootstrap components for the layout. It includes the following files:
   |-- NotFound.js - 404 page of the app
   |-- PostDetail.js - posts detail view component.Contains the author and body of a post and is rendered 
   inside the post's panel 
-  |-- Posts.js - Main component for viewing the posts.Contains a panel with nested collapsible panels for the posts.
-  The button for new posts addition is on the panel's header.
-  At the posts panels' footer are the buttons for post edit,deletion and voting.
+  |-- Posts.js - Main component for viewing the posts.Contains a panel with nested collapsible panels 
+  for the posts.The button for new posts addition is on the panel's header.At the posts panels' footer 
+  are the buttons for post edit,deletion and voting.
 |-- .gitignore 
 |-- README.MD - This README file.
 |-- package.json - npm package manager file.
