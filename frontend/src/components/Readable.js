@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
-import Categories from './Categories';
-import Header from './Header';
 import Posts from './Posts';
 import {
-	Grid,
-	Row,
-	Panel
+    Grid,
+    Row,
+    PageHeader
 } from 'react-bootstrap';
 
 class Readable extends Component {
-	render() {
-		return (
-			<Grid>
-				<Row>
-					<Header />
-				</Row>
-				<Row>
-					<Panel header={'FILTERS'}>
-						<Categories />
-					</Panel>
-				</Row>
-				<Row>
-					<Posts />
-				</Row>
-			</Grid>
-		);
-	}
+    render() {
+        return (
+            <Grid>
+                <Row>
+                    <PageHeader>
+                     Readable
+                        <small> Second project of the Udacity React nanodegree</small>
+                    </PageHeader>
+                </Row>
+                <Row>
+                    <Posts />
+                </Row>
+            </Grid>
+        );
+    }
 }
 
 export default Readable;
