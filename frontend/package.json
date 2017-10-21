@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "material-ui": "^0.19.4",
     "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.3",
@@ -13,6 +14,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-tap-event-plugin": "^3.0.2",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
