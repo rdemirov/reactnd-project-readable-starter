@@ -24,10 +24,6 @@ class Comments extends Component {
         this.props.openCommentsDialog({ postId: this.props.postId, editCommentFlag: false, commentToEdit: {} })
     }
 
-    componentDidMount() {
-        this.props.getCommentsForPostAsync(this.props.postId);
-    }
-
     render() {
         let comments = this.props.comments || [];
         let { showModal, closeCommentsDialog, editCommentAsync, addCommentAsync, editCommentFlag, commentToEdit } = this.props;
