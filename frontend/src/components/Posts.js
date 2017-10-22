@@ -12,7 +12,7 @@ import {
 } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
-import moment from 'moment';
+import helpers from '../utils/helpers';
 import {
 	Panel,
 	Row,
@@ -82,7 +82,7 @@ class Posts extends Component {
 					<Panel collapsible key={post.id} bsStyle='info'
 						header={<Row>
 							<Col xs={6}>
-								<label>{moment(new Date(post.timestamp)).format('YYYY-MM-DD')}</label>
+								<label>{helpers.formatDate(post.timestamp)}</label>
 							</Col>
 							<Col xs={6}>
 								<label>{post.title}</label>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import helpers from '../utils/helpers';
 import {
     Well,
     Grid,
@@ -53,7 +53,7 @@ class CommentDetails extends Component {
                 <Grid>
                     <Row>
                         <Col xs={10}>
-                            {moment(new Date(comment.timestamp)).format('YYYY-MM-DD')}
+                            {helpers.formatDate(comment.timestamp)}
                         </Col>
                     </Row>
                     <Row>
