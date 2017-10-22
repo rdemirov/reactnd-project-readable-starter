@@ -24,6 +24,7 @@ import {
 	Badge
 
 } from 'react-bootstrap';
+import Categories from './Categories';
 
 class Posts extends Component {
 
@@ -73,6 +74,10 @@ class Posts extends Component {
 			postToEdit } = this.props;
 		return (
 			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
+				<Row>
+						<Categories />
+					
+				</Row>
 				{posts.map((post) => (
 					<Panel collapsible key={post.id} bsStyle='info'
 						header={<Row>

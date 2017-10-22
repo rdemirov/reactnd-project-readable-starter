@@ -5,7 +5,8 @@ import Posts from './Posts';
 import {
 	Grid,
 	Row,
-	Panel
+	Panel,
+	PageHeader
 } from 'react-bootstrap';
 
 class Readable extends Component {
@@ -13,12 +14,9 @@ class Readable extends Component {
 		return (
 			<Grid>
 				<Row>
-					<Header />
-				</Row>
-				<Row>
-					<Panel header={'FILTERS'}>
-						<Categories />
-					</Panel>
+				<PageHeader>Readable &nbsp;&nbsp;
+					<small>Second project of the udacity react nanodegree</small>
+					</PageHeader>
 				</Row>
 				<Row>
 					<Posts />

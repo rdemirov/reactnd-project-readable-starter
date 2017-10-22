@@ -13,6 +13,7 @@ class App extends Component {
 		return (
 			<Switch>
 			<Route exact path='/' component={Readable} />
+			
 			<Route path='*' component={NotFound} />
 		</Switch>
 		);
