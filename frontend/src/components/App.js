@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Switch,Route,withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Readable from './Readable';
 import PostDetail from './PostDetail';
 import NotFound from './NotFound';
@@ -35,7 +36,14 @@ componentDidMount() {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => ({
+App.propTypes = {
+	categories: PropTypes.array.isRequired,
+	posts: PropTypes.array.isRequired,
+	fetchPosts: PropTypes.func.isRequired,
+	fetchCategories: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => ({
 	categories:state.categories.map((element)=>(element.path)),
 	posts:state.posts.postsArray.map((element)=>(element.id))
 })

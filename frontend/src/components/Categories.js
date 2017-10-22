@@ -29,7 +29,8 @@ class Categories extends Component {
 }
 
 Categories.propTypes = {
-	fetchCategories: PropTypes.func.isRequired
+	fetchCategories: PropTypes.func.isRequired,
+	categories: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => ({

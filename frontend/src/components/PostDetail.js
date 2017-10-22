@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {
     removePostAsync,
     voteForPostAsync,
@@ -72,8 +73,7 @@ class PostDetail extends Component {
               </Row>
               <Row>
                   <Col xs={12}>
-             
-								<ButtonGroup>
+                    <ButtonGroup>
                                 <Button onClick={() => (history.push('/'))}><Glyphicon glyph="chevron-left" /></Button>
 									<Button onClick={() => (this.openEditDialog(post))}><Glyphicon glyph="pencil" /></Button>
 									<Button onClick={() => (this.handleDelete(post.id))}>
@@ -87,12 +87,12 @@ class PostDetail extends Component {
                             </Col>
               </Row>
               <Row style={{marginTop:'1.5em'}}>
-               <Col xs={2}>
-               <Label>Author :</Label>
-               </Col>
-               <Col xs={6}>
-               {post.author}
-               </Col>
+                <Col xs={2}>
+                    <Label>Author :</Label>
+                </Col>
+                <Col xs={6}>
+                    {post.author}
+                </Col>
                </Row>
                <Row style={{marginBottom:'1.5em'}}>
                <Col xs={2}>
@@ -125,6 +125,17 @@ class PostDetail extends Component {
           </Grid>
         )
     }
+}
+
+PostDetail.propTypes = {
+    removePostAsync: PropTypes.func,
+    voteForPostAsync: PropTypes.func,
+    editPostAsync: PropTypes.func,
+    openDialog: PropTypes.func,
+    closeDialog: PropTypes.func,
+    postId: PropTypes.string.isRequired,
+    history: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({

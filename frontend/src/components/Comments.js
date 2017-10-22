@@ -61,7 +61,8 @@ Comments.propTypes = {
     editCommentAsync: PropTypes.func.isRequired,
     openCommentsDialog: PropTypes.func.isRequired,
     closeCommentsDialog: PropTypes.func,
-    addCommentAsync: PropTypes.func.isRequired
+    addCommentAsync: PropTypes.func.isRequired,
+    post: PropTypes.object
 
 }
 

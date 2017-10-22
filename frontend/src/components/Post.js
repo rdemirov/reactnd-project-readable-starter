@@ -30,7 +30,8 @@ class Post extends Component {
 
 
 Post.propTypes = {
-    post: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    comments: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({

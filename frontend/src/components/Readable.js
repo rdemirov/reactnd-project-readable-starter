@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
+import PropTypes from 'prop-types';
 import {
 	Grid,
 	Row,
@@ -21,6 +22,11 @@ class Readable extends Component {
 			</Grid>
 		);
 	}
+}
+
+Readable.propTypes = {
+	history: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
 }
 
 export default Readable;

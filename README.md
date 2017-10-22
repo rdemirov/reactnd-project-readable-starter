@@ -11,6 +11,10 @@ This is the second project of the Udacity React nanodegree. It consists of 2 par
   with module react-overlays updated to 0.7.3,due to issue with react-bootstrap modal dialogs in React v.16.
   Async calls in redux are done using the redux-thunk middleware (https://github.com/gaearon/redux-thunk)
   The frontend part of the project can be accessed at URL : http://localhost:3000
+  The posts for a specific category can be viewed at : http://localhost:3000/category , where category is one of the 
+  posts' categories existing in the app (the defaults are react,redux and udacity)
+  The post details page for a given post is accessible at: http://localhost:3000/category/postId , where category is one of the 
+  available posts' categories and postId is the post's identifier.
 
 ## Starting the project 
 

@@ -18,6 +18,7 @@ react-bootstrap components for the layout. It includes the following files:
   |-- index.js - application reducers
  +-- utils
   |-- api.js - calls to the backend API for retrieving and management of categories,comments and posts 
+  |-- helpers.js - Contains utility functions used in the application
  +-- components
   |-- App.js - Main application component.Renders the header,categories and posts components
   |-- Categories.js - Display of the posts' categories.Calls the action for filtering of posts by category
@@ -26,13 +27,16 @@ react-bootstrap components for the layout. It includes the following files:
   count of comments for a given post and a button for comments addition
   |-- CreateUpdateCommentDialog.js - Dialog for create/update of comments
   |-- CreateUpdatePostDialog.js - Add/edit posts dialog
-  |-- Header.js - Page Header components.Contains buttons for sorting of posts by vote and date
   |-- NotFound.js - 404 page of the app
-  |-- PostDetail.js - posts detail view component.Contains the author and body of a post and is rendered 
-  inside the post's panel 
+  |-- PostDetail.js - Displays detailed view for a post.Contains the post's body,voting mechanism and controls 
+  for update and deletion.Also displays the comments made for a given post and allows the user to add,edit or delete comments 
+  or vote for them.
+  |-- Post.js - Author and comments count for a given post. Visible on the main view of the posts
   |-- Posts.js - Main component for viewing the posts.Contains a panel with nested collapsible panels 
   for the posts.The button for new posts addition is on the panel's header.At the posts panels' footer 
   are the buttons for post edit,deletion and voting.
+  |-- Readable.js - Application main component.Contains the root view with the filters by category and
+  the buttons for addition,sorting,edit and deletion of posts.Allows the user to vote for posts.
 |-- .gitignore 
 |-- README.MD - This README file.
 |-- package.json - npm package manager file.
@@ -47,22 +51,21 @@ of categories for the posts and the posts panel with the button for adding a new
 
 ![Main screen](./assets/images/mainScreen.PNG)
 
-### Page header 
-
-![Header](./assets/images/header.PNG)
-
-Using the four buttons found at the page header,you can sort the posts in the following ways : 
-
-* NEWEST - by descending order of date 
-* OLDEST - by ascending order of date 
-* MOST VOTED - by descending voteScore
-* LEAST VOTED - by ascending voteScore
-
 ### Posts panel 
 
 ![postsPanel](./assets/images/postsPanel.PNG)
 
-The posts panel displays the existing posts and allows the addition,deletion,modification,upvoting and downvoting of posts.
+The posts panel displays the existing posts and allows the sorting,
+addition,deletion,modification,upvoting and downvoting of posts.
+
+### Sorting of posts 
+
+To sort the displayed posts in a given way, you should use the buttons at
+the panel's header.The possible sort orders are:
+* NEWEST - By descending order of date 
+* OLDEST - By ascending order of date 
+* MOST VOTED - By descending vote score
+* LEAST VOTED - by ascending vote score
 
 #### Addition of new posts 
 
@@ -101,11 +104,23 @@ To update the post,the user should press the CONFIRM button
 
 #### Post details 
 
-Clicking the header of the panel for a given post displays the post details:
+Clicking the header of the panel for a given post takes you to the post's
+detail page: 
 
 ![postsDetail](./assets/images/postsDetail.PNG)
 
-The details for a post contain the post's author body and comments(if present).The badge next to the 'Comments' label shows the comments count for a post.The button in the right of the row allows the user to add a new comment.
+The details for a post contain the post's author,date,body and comments(if present).The badge next to the 'Comments' label shows the comments count for a post.The button in the right of the row allows the user to add a new comment.
+
+By using the toolbar under the post's title,you can :
+* Go back to the main screen 
+* Edit the displayed post 
+* Delete the post
+* Upvote it 
+* Downvote it 
+
+![postDetailsToolbar](./assets/images/postDetailsToolbar.PNG)
+
+When you delete a post from the details screen,its URL becomes inaccessible and you are taken back to the main screen
 
 #### Adding a new comment
 

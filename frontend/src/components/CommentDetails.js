@@ -47,7 +47,7 @@ class CommentDetails extends Component {
     }
 
     render() {
-        let { comment } = this.props;
+        const { comment } = this.props;
         return (
             <Well >
                 <Grid>
