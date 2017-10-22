@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Categories from './Categories';
-import Header from './Header';
-import Posts from './Posts';
+import {Switch,Route} from 'react-router-dom';
+import Readable from './Readable';
+import NotFound from './NotFound';
 import {
 	Grid,
 	Row,
@@ -11,19 +11,10 @@ import {
 class App extends Component {
 	render() {
 		return (
-			<Grid>
-				<Row>
-					<Header />
-				</Row>
-				<Row>
-					<Panel header={'FILTERS'}>
-						<Categories />
-					</Panel>
-				</Row>
-				<Row>
-					<Posts />
-				</Row>
-			</Grid>
+			<Switch>
+			<Route exact path='/' component={Readable} />
+			<Route path='*' component={NotFound} />
+		</Switch>
 		);
 	}
 }
