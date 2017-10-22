@@ -34,7 +34,7 @@ Post.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    comments:state.comments.commentsArray,
+    comments:state.comments.commentsArray.filter((comment)=>(comment.parentId===ownProps.post.id)),
     ...ownProps
 });
 
