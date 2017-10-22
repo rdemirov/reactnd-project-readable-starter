@@ -12,7 +12,7 @@ import {
 	getPostsForCategoryAsync,
 	sortPosts
 } from '../actions';
-import PostDetail from './PostDetail';
+import Post from './Post';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import helpers from '../utils/helpers';
 import {
@@ -94,7 +94,7 @@ class Posts extends Component {
 					
 				</Row>
 				{posts.map((post) => (
-					<Panel collapsible key={post.id} bsStyle='info'
+					<Panel key={post.id} bsStyle='info'
 						header={<Row>
 							<Col xs={6}>
 								<label>{helpers.formatDate(post.timestamp)}</label>
@@ -117,7 +117,7 @@ class Posts extends Component {
 							</ButtonToolbar>
 						}
 						eventKey={post.id}>
-						<PostDetail key={post.id} post={post} />
+						<Post key={post.id} post={post} />
 					</Panel>
 				))}
 				{showModal && <CreateUpdatePostDialog
