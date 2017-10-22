@@ -26,7 +26,7 @@ class Categories extends Component {
 		return (
 			<Panel bsStyle={'info'} header={'Categories'} style={{width:'98%',marginLeft:'1%',marginRight:'1%'}}>
 				<NavLink to={'/'}>{'All'}</NavLink>
-				{categories.map((category)=>(	<NavLink style={{margin:'10px'}} to={`/posts/${category.path}`}>{category.name}</NavLink>))}
+				{categories.map((category)=>(	<NavLink style={{margin:'10px'}} to={`/${category.path}`}>{category.name}</NavLink>))}
 				
 			</Panel>
 		);
