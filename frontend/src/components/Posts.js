@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
 	fetchPosts,
@@ -44,9 +45,10 @@ class Posts extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-			if(nextProps.category!=='all')
+			if(nextProps.category!=='all' && nextProps.category!==this.props.category)
 			this.props.getPostsForCategoryAsync(nextProps.category);
-			else this.props.fetchPosts()
+			 else if(nextProps.category==='all' && nextProps.category!==this.props.category) this.props.fetchPosts()
+			 
 		} 
 
 
@@ -96,11 +98,12 @@ class Posts extends Component {
 				{posts.map((post) => (
 					<Panel key={post.id} bsStyle='info'
 						header={<Row>
-							<Col xs={6}>
+							<Col xs={4}>
 								<label>{helpers.formatDate(post.timestamp)}</label>
 							</Col>
 							<Col xs={6}>
-								<label>{post.title}</label>
+								<NavLink to={'/'}>{post.title}</NavLink>
+								
 							</Col>
 						</Row>}
 						footer={
