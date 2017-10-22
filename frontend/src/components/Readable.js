@@ -19,7 +19,7 @@ class Readable extends Component {
 					</PageHeader>
 				</Row>
 				<Row>
-					<Posts history={this.props.history} category={this.props.match.params.category}/>
+				<Posts history={this.props.history} category={this.props.match.params.category || 'all'}/>
 				</Row>
 			</Grid>
 		);

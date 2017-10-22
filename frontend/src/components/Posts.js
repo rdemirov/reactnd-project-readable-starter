@@ -8,7 +8,8 @@ import {
 	editPostAsync,
 	openDialog,
 	closeDialog,
-	addPostAsync
+	addPostAsync,
+	getPostsForCategoryAsync
 } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
@@ -40,6 +41,15 @@ class Posts extends Component {
 	componentDidMount() {
 		this.props.fetchPosts();
 	}
+
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.category && nextProps.category!==this.props.category) {
+			if(nextProps.category!=='all')
+			this.props.getPostsForCategoryAsync(nextProps.category);
+			else this.props.fetchPosts()
+		} 
+	}
+
 
 	handleDelete(postId) {
 		this.props.deletePost(postId);
@@ -135,12 +145,14 @@ Posts.propTypes = {
 	editPostAsync: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state,ownProps) => ({
 	posts: state.posts.postsArray,
 	showModal: state.posts.showModal,
 	categories: state.categories,
 	postEditFlag: state.posts.editPostFlag,
-	postToEdit: state.posts.postToEdit
+	postToEdit: state.posts.postToEdit,
+	history:ownProps.history,
+	category:ownProps.category
 });
 
 
@@ -151,5 +163,6 @@ export default connect(mapStateToProps, {
 	openDialog,
 	closeDialog,
 	addPostAsync,
-	editPostAsync
+	editPostAsync,
+	getPostsForCategoryAsync
 })(Posts);
