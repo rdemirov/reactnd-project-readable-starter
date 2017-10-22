@@ -35,9 +35,43 @@ import {
 
 
 class PostDetail extends Component {
+    constructor(props) {
+		super(props);
+		this.handleDelete = this.handleDelete.bind(this);
+		this.handleUpVote = this.handleUpVote.bind(this);
+		this.handleDownVote = this.handleDownVote.bind(this);
+		this.openEditDialog = this.openEditDialog.bind(this);
+    }
+    
+    handleDelete(postId) {
+        this.props.removePostAsync(postId);
+        this.props.history.push('/');
+	}
+
+
+	openEditDialog(post) {
+		let { author, category, title, body, id } = post;
+		this.props.openDialog({ postToEdit: { author, category, title, body, id }, editPostFlag: true });
+	}
+
+
+	handleUpVote(postId) {
+		this.props.voteForPostAsync({ postId, option: 'upVote' });
+	}
+
+	handleDownVote(postId) {
+		this.props.voteForPostAsync({ postId, option: 'downVote' });
+	}
 
     render() {
-       const {post,history}=this.props;
+       const {post,history,editPostAsync,
+        closeDialog,
+        showModal,
+        categories,
+        addPostAsync,
+        postEditFlag,
+        sortPosts,
+        postToEdit}=this.props;
         return (
           <Grid>
               <Row>
@@ -62,7 +96,7 @@ class PostDetail extends Component {
 						
                             </Col>
               </Row>
-              <Row>
+              <Row style={{marginTop:'1.5em'}}>
                <Col xs={2}>
                <Label>Author :</Label>
                </Col>
@@ -70,7 +104,7 @@ class PostDetail extends Component {
                {post.author}
                </Col>
                </Row>
-               <Row>
+               <Row style={{marginBottom:'1.5em'}}>
                <Col xs={2}>
                <Label>Date :</Label>
                </Col>
@@ -78,7 +112,7 @@ class PostDetail extends Component {
                {helpers.formatDate(post.timestamp)}
                </Col>
               </Row>
-              <Row>
+              <Row style={{marginBottom:'1.5em'}}>
                   <Col xs={8}>
                   <FormControl.Static>
                       {post.body}
@@ -88,6 +122,16 @@ class PostDetail extends Component {
               <Row>
                   <Comments postId={post.id} post={post} />
               </Row>
+              {showModal && <CreateUpdatePostDialog
+					showDialog={showModal}
+					closeDialog={closeDialog}
+					categories={categories}
+					addPost={addPostAsync}
+					editPost={editPostAsync}
+					editFlag={postEditFlag}
+					postToEdit={postToEdit}
+
+				/>}
           </Grid>
         )
     }
@@ -96,10 +140,18 @@ class PostDetail extends Component {
 const mapStateToProps = (state, ownProps) => ({
     postId:ownProps.match.params.postId,
     history:ownProps.history,
-    post:state.posts.postsArray.filter((element)=>(element.id===ownProps.match.params.postId))[0]
+    post:state.posts.postsArray.filter((element)=>(element.id===ownProps.match.params.postId))[0],
+    showModal: state.posts.showModal,
+	categories: state.categories,
+	postEditFlag: state.posts.editPostFlag,
+	postToEdit: state.posts.postToEdit
 
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    removePostAsync,
+    voteForPostAsync
+
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)
