@@ -165,7 +165,7 @@ CreateUpdatePostDialog.propTypes = {
     showDialog: PropTypes.bool.isRequired,
     closeDialog: PropTypes.func.isRequired,
     categories: PropTypes.arrayOf(PropTypes.object),
-    addPost: PropTypes.func.isRequired,
+    addPost: PropTypes.func,
     editPost: PropTypes.func.isRequired,
     editFlag: PropTypes.bool.isRequired,
     postToEdit: PropTypes.object

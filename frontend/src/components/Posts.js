@@ -95,7 +95,7 @@ class Posts extends Component {
 						<Categories />
 					
 				</Row>
-				{posts.map((post) => (
+				{posts.map((post,index) => (
 					<Panel key={post.id} bsStyle='info'
 						header={<Row>
 							<Col xs={4}>
@@ -120,7 +120,7 @@ class Posts extends Component {
 							</ButtonToolbar>
 						}
 						eventKey={post.id}>
-						<Post key={post.id} post={post} />
+						<Post key={index} post={post} />
 					</Panel>
 				))}
 				{showModal && <CreateUpdatePostDialog

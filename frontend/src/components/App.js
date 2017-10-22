@@ -27,7 +27,7 @@ componentDidMount() {
 			{categories.length>0&& posts.length>0&&<Route exact path='/:category/:postId'  render={
 				(props)=>{
 					if(posts.indexOf(props.match.params.postId)===-1 || categories.indexOf(props.match.params.category)===-1) return <NotFound />
-					else return <PostDetail />
+					else return <PostDetail {...props} />
 				}
 			} />}
 		</Switch>

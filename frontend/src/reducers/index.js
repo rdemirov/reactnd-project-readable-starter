@@ -124,7 +124,7 @@ const postsReducer = (state = defaultPostsState, action) => {
 		}
 		case actionTypes.VOTE_FOR_POST: {
 			let posts = state.postsArray.map((post) => {
-				if (post.id === action.post.id) post.voteScore = action.post.voteScore;
+			if (post.id === action.post.id) return action.post;
 				return post;
 			}).sort((a, b) => (b.voteScore - a.voteScore))
 			return {
