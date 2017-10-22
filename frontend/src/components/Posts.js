@@ -9,7 +9,8 @@ import {
 	openDialog,
 	closeDialog,
 	addPostAsync,
-	getPostsForCategoryAsync
+	getPostsForCategoryAsync,
+	sortPosts
 } from '../actions';
 import PostDetail from './PostDetail';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
@@ -43,12 +44,10 @@ class Posts extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.category && nextProps.category!==this.props.category) {
 			if(nextProps.category!=='all')
 			this.props.getPostsForCategoryAsync(nextProps.category);
 			else this.props.fetchPosts()
 		} 
-	}
 
 
 	handleDelete(postId) {
@@ -81,9 +80,15 @@ class Posts extends Component {
 			categories,
 			addPostAsync,
 			postEditFlag,
+			sortPosts,
 			postToEdit } = this.props;
 		return (
-			<Panel header={<span><label>Posts</label> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
+			<Panel header={<span><label>Posts</label>	<ButtonGroup bsSize="large">
+			<Button onClick={() => (sortPosts({ sortBy: 'dateDesc' }))}>Newest </Button>
+			<Button onClick={() => (sortPosts({ sortBy: 'dateAsc' }))}>Oldest</Button>
+			<Button onClick={() => (sortPosts({ sortBy: 'votesDesc' }))}>Most voted</Button>
+			<Button onClick={() => (sortPosts({ sortBy: 'votesAsc' }))}>Least voted</Button>
+		</ButtonGroup> <Button onClick={this.openDialog} style={{ float: 'right' }}>Add Post</Button></span>}>
 				<Row>
 						<Categories />
 					
@@ -164,5 +169,6 @@ export default connect(mapStateToProps, {
 	closeDialog,
 	addPostAsync,
 	editPostAsync,
-	getPostsForCategoryAsync
+	getPostsForCategoryAsync,
+	sortPosts
 })(Posts);
