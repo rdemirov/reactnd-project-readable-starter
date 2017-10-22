@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {NavLink} from 'react-router-dom';
+
 import {
-	fetchCategories,
-	getPostsForCategoryAsync,
-	fetchPosts
+	fetchCategories//,
+	// getPostsForCategoryAsync,
+	// fetchPosts
 } from '../actions';
 import {
 	Panel,
@@ -15,27 +17,30 @@ import {
 class Categories extends Component {
 	constructor(props) {
 		super(props);
-		this.handleSelect = this.handleSelect.bind(this);
+	//	this.handleSelect = this.handleSelect.bind(this);
 	}
 
 	componentDidMount() {
 		this.props.fetchCategories();
 	}
 
-	handleSelect(selectedKey) {
-		if (selectedKey !== 'all')
-			this.props.getPostsForCategoryAsync(selectedKey);
-		else this.props.fetchPosts();
-	}
+	// handleSelect(selectedKey) {
+	// 	if (selectedKey !== 'all')
+	// 		this.props.getPostsForCategoryAsync(selectedKey);
+	// 	else this.props.fetchPosts();
+	// }
 
 	render() {
 		let { categories } = this.props;
 		return (
-			<Panel bsStyle={'info'} header={'Categories'}>
-				<Nav bsStyle="pills" activeKey={1} onSelect={this.handleSelect}>
+			<Panel bsStyle={'info'} header={'Categories'} style={{width:'98%',marginLeft:'1%',marginRight:'1%'}}>
+				{/* <Nav bsStyle="pills" activeKey={1} onSelect={this.handleSelect}>
 					<NavItem eventKey={'all'} key={'all'}>{'All'}</NavItem>
 					{categories.map((element) => (<NavItem eventKey={element.path} key={element.path}>{element.name}</NavItem>))}
-				</Nav>
+				</Nav> */}
+				<NavLink to={'/'}>{'All'}</NavLink>
+				{categories.map((category)=>(	<NavLink style={{margin:'10px'}} to={`/${category.path}`}>{category.name}</NavLink>))}
+				
 			</Panel>
 		);
 	}
@@ -43,7 +48,7 @@ class Categories extends Component {
 
 Categories.propTypes = {
 	fetchCategories: PropTypes.func.isRequired,
-	getPostsForCategoryAsync: PropTypes.func.isRequired,
+	//getPostsForCategoryAsync: PropTypes.func.isRequired,
 	fetchPosts: PropTypes.func.isRequired
 }
 
@@ -52,9 +57,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-	fetchCategories,
-	getPostsForCategoryAsync,
-	fetchPosts
+	fetchCategories//,
+	//getPostsForCategoryAsync,
+	//fetchPosts
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
