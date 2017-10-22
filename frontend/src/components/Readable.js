@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import Categories from './Categories';
-import Header from './Header';
 import Posts from './Posts';
 import {
 	Grid,
 	Row,
-	Panel,
 	PageHeader
 } from 'react-bootstrap';
 

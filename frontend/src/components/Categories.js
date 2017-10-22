@@ -7,15 +7,10 @@ import {
 	fetchCategories
 } from '../actions';
 import {
-	Panel,
-	Nav,
-	NavItem
+	Panel
 } from 'react-bootstrap';
 
 class Categories extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	componentDidMount() {
 		this.props.fetchCategories();
@@ -26,7 +21,7 @@ class Categories extends Component {
 		return (
 			<Panel bsStyle={'info'} header={'Categories'} style={{width:'98%',marginLeft:'1%',marginRight:'1%'}}>
 				<NavLink to={'/'}>{'All'}</NavLink>
-				{categories.map((category)=>(	<NavLink style={{margin:'10px'}} to={`/${category.path}`}>{category.name}</NavLink>))}
+				{categories.map((category)=>(	<NavLink style={{margin:'10px'}} key={category.path} to={`/${category.path}`}>{category.name}</NavLink>))}
 				
 			</Panel>
 		);
@@ -34,8 +29,7 @@ class Categories extends Component {
 }
 
 Categories.propTypes = {
-	fetchCategories: PropTypes.func.isRequired,
-	fetchPosts: PropTypes.func.isRequired
+	fetchCategories: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({

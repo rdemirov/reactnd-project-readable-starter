@@ -1,31 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import {
-    fetchPosts,
     removePostAsync,
     voteForPostAsync,
     editPostAsync,
     openDialog,
-    closeDialog,
-    addPostAsync,
-    getPostsForCategoryAsync,
-    sortPosts
+    closeDialog
 } from '../actions';
-import Post from './Post';
 import Comments from './Comments';
 import CreateUpdatePostDialog from './CreateUpdatePostDialog'
 import helpers from '../utils/helpers';
 import {
-    Panel,
     Grid,
     PageHeader,
     Label,
     Row,
     Col,
     Button,
-    ButtonToolbar,
     ButtonGroup,
     FormControl,
     Glyphicon,
@@ -70,13 +61,12 @@ class PostDetail extends Component {
         categories,
         addPostAsync,
         postEditFlag,
-        sortPosts,
         postToEdit}=this.props;
         return (
           <Grid>
               <Row>
                   <PageHeader>
-                      <h1>{post.title}</h1>
+                    {post.title}
                   </PageHeader>
                 
               </Row>
@@ -150,7 +140,10 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
     removePostAsync,
-    voteForPostAsync
+    voteForPostAsync,
+    editPostAsync,
+    openDialog,
+    closeDialog
 
 }
 

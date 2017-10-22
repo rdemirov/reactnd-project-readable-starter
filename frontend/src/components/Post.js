@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {Grid,Row,Col,Label,Badge} from 'react-bootstrap';
+import {Grid,Row,Col} from 'react-bootstrap';
 import {getCommentsForPostAsync} from '../actions';
 
 
