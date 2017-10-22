@@ -102,7 +102,7 @@ class Posts extends Component {
 								<label>{helpers.formatDate(post.timestamp)}</label>
 							</Col>
 							<Col xs={6}>
-								<NavLink to={'/'}>{post.title}</NavLink>
+								<NavLink to={`/${post.category}/${post.id}`}>{post.title}</NavLink>
 								
 							</Col>
 						</Row>}
