@@ -43,9 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-	fetchCategories//,
-	//getPostsForCategoryAsync,
-	//fetchPosts
+	fetchCategories
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
