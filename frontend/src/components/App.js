@@ -21,6 +21,7 @@ componentDidMount() {
 			<Route exact path='/' component={Readable} />
 			{categories.length>0&& <Route exact path='/:category' render={
 				(props)=>{
+					props.categoryChange=true;
 					if(categories.indexOf(props.match.params.category)===-1) return <NotFound />
 					else return <Readable {...props} />
 				}

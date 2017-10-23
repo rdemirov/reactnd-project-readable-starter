@@ -45,10 +45,10 @@ class Posts extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-			if(nextProps.category!=='all' && nextProps.category!==this.props.category)
-			this.props.getPostsForCategoryAsync(nextProps.category);
-			 else if(nextProps.category==='all' && nextProps.category!==this.props.category) this.props.fetchPosts()
-			 
+			if(nextProps.categoryChange ) {
+				if(nextProps.category!=='all') this.props.getPostsForCategoryAsync(nextProps.category);
+				else this.props.fetchPosts();
+			} else this.props.fetchPosts()
 		} 
 
 
@@ -150,7 +150,8 @@ Posts.propTypes = {
 	openDialog: PropTypes.func.isRequired,
 	closeDialog: PropTypes.func.isRequired,
 	addPostAsync: PropTypes.func.isRequired,
-	editPostAsync: PropTypes.func.isRequired
+	editPostAsync: PropTypes.func.isRequired,
+	categoryChange: PropTypes.bool
 }
 
 const mapStateToProps = (state,ownProps) => ({
@@ -160,7 +161,8 @@ const mapStateToProps = (state,ownProps) => ({
 	postEditFlag: state.posts.editPostFlag,
 	postToEdit: state.posts.postToEdit,
 	history:ownProps.history,
-	category:ownProps.category
+	category:ownProps.category,
+	categoryChange: ownProps.categoryChange
 });
 
 

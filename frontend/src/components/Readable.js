@@ -17,7 +17,7 @@ class Readable extends Component {
 					</PageHeader>
 				</Row>
 				<Row>
-				<Posts history={this.props.history} category={this.props.match.params.category || 'all'}/>
+				<Posts history={this.props.history} categoryChange={this.props.categoryChange} category={this.props.match.params.category || 'all'}/>
 				</Row>
 			</Grid>
 		);
@@ -26,7 +26,8 @@ class Readable extends Component {
 
 Readable.propTypes = {
 	history: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+	match: PropTypes.object.isRequired,
+	categoryChange: PropTypes.bool
 }
 
 export default Readable;
