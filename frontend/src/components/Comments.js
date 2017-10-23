@@ -20,6 +20,10 @@ class Comments extends Component {
         this.handleOpenDialog = this.handleOpenDialog.bind(this);
     }
 
+    componentDidMount() {
+        this.props.getCommentsForPostAsync(this.props.postId)
+    }
+
     handleOpenDialog() {
         this.props.openCommentsDialog({ postId: this.props.postId, editCommentFlag: false, commentToEdit: {} })
     }

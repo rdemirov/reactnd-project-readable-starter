@@ -45,10 +45,10 @@ class Posts extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-			if(nextProps.categoryChange ) {
+			if(nextProps.categoryChange && nextProps.category!==this.props.category ) {
 				if(nextProps.category!=='all') this.props.getPostsForCategoryAsync(nextProps.category);
 				else this.props.fetchPosts();
-			} else this.props.fetchPosts()
+			}
 		} 
 
 

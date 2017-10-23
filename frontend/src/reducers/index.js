@@ -19,9 +19,10 @@ const defaultCategoriesState = [];
 const commentsReducer = (state = defaultCommentsState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_COMMENTS_FOR_POST: {
-			return {
+			let postComments = state.commentsArray.filter((comment)=>(action.comments.findIndex((element)=>(element.id===comment.id))===-1));
+						return {
 				...state,
-				commentsArray: [...state.commentsArray, ...action.comments]
+				commentsArray: [...postComments, ...action.comments]
 			}
 		}
 		case actionTypes.DELETE_COMMENT: {
