@@ -20,7 +20,6 @@ class Categories extends Component {
 		let { categories } = this.props;
 		return (
 			<Panel bsStyle={'info'} header={'Categories'} style={{width:'98%',marginLeft:'1%',marginRight:'1%'}}>
-				<NavLink to={'/'}>{'All'}</NavLink>
 				{categories.map((category)=>(	<NavLink style={{margin:'10px'}} key={category.path} to={`/${category.path}`}>{category.name}</NavLink>))}
 				
 			</Panel>

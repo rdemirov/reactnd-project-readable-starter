@@ -85,7 +85,7 @@ const commentsReducer = (state = defaultCommentsState, action) => {
 const categoriesReducer = (state = defaultCategoriesState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_ALL_CATEGORIES: {
-			return [...action.categories];
+			return [{name:'All',path:'all'},...action.categories];
 		}
 		default: return state;
 	}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch,Route,withRouter} from 'react-router-dom';
+import {Switch,Route,withRouter,Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Readable from './Readable';
 import PostDetail from './PostDetail';
@@ -21,9 +21,9 @@ componentDidMount() {
 			<Route exact path='/' component={Readable} />
 			{categories.length>0&& <Route exact path='/:category' render={
 				(props)=>{
-					props.categoryChange=true;
 					if(categories.indexOf(props.match.params.category)===-1) return <NotFound />
-					else return <Readable {...props} />
+					else if(props.match.params.category==='all') return <Redirect to='/' />
+					else return <Readable {...{...props, categoryChange:true}} />
 				}
 			} />}
 			{categories.length>0&& posts.length>0&&<Route exact path='/:category/:postId'  render={
